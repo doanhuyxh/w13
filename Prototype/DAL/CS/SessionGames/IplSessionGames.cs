@@ -36,7 +36,7 @@ namespace marketplace
         {
             try
             {
-                var data = unitOfWork.Procedure<SessionGames>("SessionGames_GetSessionComplete").FirstOrDefault();
+                var data = unitOfWork.Procedure<SessionGames>("Session_GetLastSession").FirstOrDefault();
                 return data;
             }
             catch (Exception ex)
@@ -49,7 +49,7 @@ namespace marketplace
         {
             try
             {
-                var data = unitOfWork.Procedure<SessionGames>("Session_GetSessionCurrent").FirstOrDefault();
+                var data = unitOfWork.Procedure<SessionGames>("SessionGames_GetSessionCurrent").FirstOrDefault();
                 return data;
             }
             catch (Exception ex)

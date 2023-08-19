@@ -49,6 +49,10 @@ namespace PTEcommerce.Services.AutoCalculateResult
                 {
                     LogService("Error create session");
                 }
+                if(newSessionId <= 0)
+                {
+                    LogService("Session current has running! Cannot create");
+                }
                 var client = new RestClient(urlDomain + "/AdministratorManager/PushSignalR/CreateSession?sessionId=" + newSessionId + "&result1=" + value1 + "&result2=" + value2);
                 var request = new RestRequest(Method.GET);
                 IRestResponse response = client.Execute(request);

@@ -3,15 +3,18 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<input type="text" id="valueTimeCountDown" hidden />
+<input type="text" id="sessionCurrent" hidden />
 <div class="main">
 
     <div class="item-game">
         <div class="left col-8">
-            <b id="resultSession1">Kết quả gần nhất</b>
+            <b>Kết quả gần nhất</b>
         </div>
         <div class="right col-4">
-            <p id="resultSession2">12345</p>
+            <p id="resultSession1"></p>
+            <div class="line"></div>
+            <p id="resultSession2"></p>
         </div>
     </div>
 
@@ -20,9 +23,9 @@
             <b>Phiên đang chạy</b>
         </div>
         <div class="right col-4">
-            <p id="sessionName">Phiên 23</p>
+            <p id="sessionName"></p>
             <div class="line"></div>
-            <p id="timeCountDown">00:22</p>
+            <p id="timeCountDown"></p>
         </div>
     </div>
 
