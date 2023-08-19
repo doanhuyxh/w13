@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdministratorManager/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">
+                    Cài đặt chức năng
+                </h4>
+                <div class="mb-3">
+                    <table class="table table-bordered" id="tblSetting"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModalShowSetting" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Cập nhật cấu hình
+                </h5>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="inputKeySetting" hidden="hidden" />
+                <div class="mb-3 row">
+                    <label class="col-2 custom-control-label">Chức năng</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputDisplayName" readonly="readonly" />
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-2 custom-control-label">Giá trị</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="20" id="inputValueSetting"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnUpdateSettingValue">Cập nhật</button>
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Đóng lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,43 @@
+﻿@model PTEcommerce.Business.Models.InforUserModel
+@{
+    Layout = null;
+}
+@if (!string.IsNullOrEmpty(Model.nick))
+{
+    <div class="product-inline mb-0">
+        <a href="javascript:void(0)">
+            <img src="@Model.avatar" class="img-fluid rounded-circle" alt="">
+        </a>
+        <div class="product-inline-content m-lg-2">
+            <div>
+                <h2 class="text-overflow">@HttpUtility.HtmlDecode(Model.nick);</h2>
+                <div class="price">
+                    <h3>Hago ID: @Model.vid</h3>
+                    <input type="text" id="txtUidCustomer"  value="@Model.uid" class="d-none" />
+                    <input type="text" id="txtVidCustomer"  value="@Model.vid" class="d-none" />
+                </div>
+            </div>
+        </div>
+        <div class="wishlist-btn" id="btnHideInformation">
+            <i class="iconly-Close-Square icli"></i>
+            <i class="iconly-Close-Square icbo"></i>
+        </div>
+    </div>
+}
+else
+{
+    <div class="product-inline mb-0">
+        <a href="javascript:void(0)">
+            <img src="https://hagopay.com/Assets/img/favicon.png" class="img-fluid rounded-circle" alt="">
+        </a>
+        <div class="product-inline-content m-lg-2">
+            <div>
+                <h2 class="lazy-show">&nbsp;</h2>
+                <div class="price w-50">
+                    <h3 class="lazy-show">&nbsp;</h3>
+                    <input type="text" id="txtUidCustomer" class="d-none" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

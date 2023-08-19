@@ -1,0 +1,229 @@
+﻿
+@{
+    ViewBag.Title = "RechargeAnonymous";
+    Layout = "~/Views/Shared/_LayoutHistory.cshtml";
+    var accountMomo = (marketplace.AccountMomo)ViewBag.ListAccountMomo;
+}
+
+
+<div class="col-12 mb-0">
+    <!-- header -->
+    <header class="header row align-items-center">
+        <div class="col-auto pe-0">
+            <a href="/" class="btn btn-link btn-square back-btn" type="button">
+                <i class="bi bi-arrow-left fs-4"></i>
+            </a>
+        </div>
+        <div class="col">
+            <div class="row gx-2">
+                <div class="col-auto">
+                    <figure class="avatar avatar-44">
+                        <img src="~/Assets/images/favicon.png" alt="" class="w-100">
+                    </figure>
+                </div>
+                <div class="col-auto">
+                    <h5 class="mb-0 mt-1 text-theme">Hagopay.com</h5>
+                    <p class="text-secondary small">Hotline: 0962.711117</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header ends -->
+</div>
+
+<div class="col position-relative page-content">
+    <!-- content page -->
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 col-xxl-7 mb-3 mt-2">
+            <h6 class="mb-3">Nạp không cần tài khoản</h6>
+            <div class="row gx-2 mb-3">
+                <div class="col">
+                    <input type="text" class="form-control border-0 shadow-sm" placeholder="Nhập Hago ID..." id="txtHagoID" inputmode="numeric">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-theme" id="btnSearchInfor" type="button">
+                        Kiểm tra
+                    </button>
+                </div>
+            </div>
+            <input type="text" id="txtHagoIdResponse" class="d-none" />
+            <input type="text" id="txtHagoUIdResponse" class="d-none" />
+            <div class="row">
+                <div class="col">
+                    <div class="card border-0 mb-2">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <div class="avatar avatar-50 rounded-circle coverimg" id="bgAvatar" style="background-image: url(/Assets/images/favicon.png); ">
+                                        <img src="/Assets/images/favicon.png" alt="" id="txtAvatar" style="display: none;">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <h6 class="fw-medium mb-2" id="txtNick"></h6>
+                                    <p class="small text-theme" id="txtVID"><span class="text-secondary">Nhập Hago ID và kiểm tra để xác minh<br> tài khoản nhận kim cương</span></p>
+                                </div>
+                                <div class="col-auto">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <select class="form-select mt-2 mb-3" id="sltChooseServiceHago">
+                <option value="-1">Chọn dịch vụ</option>
+                <option value="0" data-syntax="hagokc">Nạp kim cương</option>
+                <option value="1" data-syntax="ks" data-amount="120000">Mua mới Kỵ Sĩ</option>
+                <option value="1" data-syntax="tt" data-amount="1200000">Mua mới Tử Tước</option>
+                <option value="1" data-syntax="bt" data-amount="6000000">Mua mới Bá Tước</option>
+                <option value="1" data-syntax="ct" data-amount="23000000">Mua mới Công Tước</option>
+                <option value="1" data-syntax="ghks" data-amount="45000">Gia hạn Kỵ Sĩ</option>
+                <option value="1" data-syntax="ghtt" data-amount="500000">Gia hạn Tử Tước</option>
+                <option value="1" data-syntax="ghbt" data-amount="1950000">Gia hạn Bá Tước</option>
+                <option value="1" data-syntax="ghct" data-amount="7800000">Gia hạn Công Tước</option>
+            </select>
+            <div id="showInformationPayment">
+                <div class="card bg-white border-0 mb-2">
+                    <div class="card-body py-1">
+                        <ul class="nav nav-tabs justify-content-center nav-gomobileux border-0" id="navtabscard" role="tablist">
+                            <li class="nav-item col-6" role="presentation">
+                                <a href="javascript:void(0)" class="nav-link active text-center py-1" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#atm" role="tab" aria-controls="tab1" aria-selected="true">ATM - VÍ MOMO</a>
+                            </li>
+                            <li class="nav-item col-6 text-center" role="presentation">
+                                <a href="javascript:void(0)" class="nav-link text-center py-1" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#card" role="tab" aria-controls="tab2" aria-selected="false" tabindex="-1">THẺ CÀO</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content" id="nav-navtabscard">
+                    <div class="tab-pane fade active show" id="atm" role="tabpanel" aria-labelledby="tab1-tab">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card border-0 mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row align-items-center mb-1">
+                                            <div class="col">
+                                                <p>
+                                                    <span class="h5">ACB - NGÂN HÀNG Á CHÂU</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-auto align-self-center">
+                                                <img src="~/Assets/images/ACB_Logo.png" height="24px" alt="">
+                                            </div>
+                                        </div>
+                                        <p class="mb-1 small">CTK: <span class="text-theme">ĐỖ TRƯỜNG THẮNG</span></p>
+                                        <p class="small mb-1">STK: <span class="text-theme">103674688888</span>  <a href="javascript:void(0)" class="btn btn-theme size-10 py-1 px-2 ms-2 mb-2" id="btnCopyBankNumber" data-content="103674688888">copy</a></p>
+                                        <p class="small">NỘI DUNG: <span class="text-theme textSyntaxRechargeAnonymous"></span> <a href="javascript:void(0)" class="btnCopySyntaxString btn btn-theme size-10 py-1 px-2 ms-2  mb-2" data-content="">copy</a></p>
+                                    </div>
+                                </div>
+                                <div class="card border-0 mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="row align-items-center mb-1">
+                                            <div class="col">
+                                                <p>
+                                                    <span class="h5">VÍ ĐIỆN TỬ MOMO</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-auto align-self-center">
+                                                <img src="~/Assets/images/momo.png" height="24px" alt="">
+                                            </div>
+                                        </div>
+                                        <p class="mb-1 small">CTK: <span class="text-theme">@accountMomo.Name</span></p>
+                                        <p class="small mb-1">SDT: <span class="text-theme">@accountMomo.Phone</span>  <a href="javascript:void(0)" class="btn btn-theme size-10 py-1 px-2 ms-2  mb-2" id="btnCopyPhoneNumber" data-content="@accountMomo.Phone">copy</a></p>
+                                        <p class="small mb-1 divShowPricesServiceHago">SỐ TIỀN: <span class="text-theme textPricesServicesHago">@accountMomo.Phone</span></p>
+                                        <p class="small">NỘI DUNG: <span class="text-theme textSyntaxRechargeAnonymous"></span>  <a href="javascript:void(0)" class="btnCopySyntaxString btn btn-theme size-10 py-1 px-2 ms-2  mb-2" data-content="">copy</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="small mt-3">- Vui lòng chuyển số tiền cần nạp đến stk hoặc momo hiển thị phía trên.</p>
+                        <p class="small ">- Phần nội dung chuyển khoản quý khách vui lòng ghi đúng như hướng dẫn: <span class="syntaxExample"></span>[dấu cách]id hago (Ví dụ: <span class="syntaxExample"></span> 666666666).</p>
+                        <p class="small ">- Trường hợp chuyển sai nội dung. Vui lòng liên hệ zalo: 0962.711117 để xác thực và cộng tiền thủ công.</p>
+                    </div>
+                    <div class="tab-pane fade" id="card" role="tabpanel" aria-labelledby="tab2-tab">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card border-0 mb-3 w-100">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <span class="small">Nhà mạng</span>
+                                            <select class="form-select border-width-1" id="Telco">
+                                                <option value="">Loại thẻ cào</option>
+                                                <option value="VIETTEL">Thẻ cào Viettel</option>
+                                                <option value="VINAPHONE">Thẻ cào Vinaphone</option>
+                                                <option value="MOBIFONE">Thẻ cào Mobifone</option>
+                                                <option value="VIETNAMOBILE">Thẻ cào Vietnamobile</option>
+                                                <option value="ZING">Thẻ cào Zing</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="small">Mệnh giá</span>
+                                            <select class="form-select border-width-1" id="Amount">
+                                                <option value="0">Mệnh giá</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="small">Mã thẻ cào</span>
+                                            <input type="text" class="form-control border-width-1" id="Pin" />
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="small">Seri thẻ cào</span>
+                                            <input type="text" class="form-control border-width-1" id="Serial" />
+                                        </div>
+                                        <a href="javascript:void(0)" class="btn btn-theme w-100 " id="btnRechargeDiamondByCard">NẠP THẺ CÀO</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="small mt-3">- Vui lòng chọn đúng mệnh giá thẻ, nhập sai sẽ bị trừ 50% giá trị thực của thẻ cào.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="showInformationPaymentPakage">
+                <div class="row">
+                    <div class="col">
+                        <div class="card border-0 mb-3 w-100">
+                            <div class="card-body">
+                                <div class="row align-items-center mb-1">
+                                    <div class="col">
+                                        <p>
+                                            <span class="h5">ACB - NGÂN HÀNG Á CHÂU</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-auto align-self-center">
+                                        <img src="~/Assets/images/ACB_Logo.png" height="17px" alt="">
+                                    </div>
+                                </div>
+                                <p class="mb-1 small">CTK: <span class="text-theme">ĐỖ TRƯỜNG THẮNG</span></p>
+                                <p class="small mb-1">STK: <span class="text-theme">103674688888</span>  <a href="javascript:void(0)" class="btn btn-theme size-10 py-1 px-2 ms-2 mb-2" id="btnCopyBankNumber" data-content="103674688888">copy</a></p>
+                                <p class="small mb-1">SỐ TIỀN: <span class="text-theme textPricesServicesHago"></span></p>
+                                <p class="small">NỘI DUNG: <span class="text-theme textSyntaxRechargePakageAnonymous"></span> <a href="javascript:void(0)" class="btnCopyPakageSyntaxString btn btn-theme size-10 py-1 px-2 ms-2  mb-2" data-content="">copy</a></p>
+                            </div>
+                        </div>
+                        <div class="card border-0 mb-3 w-100">
+                            <div class="card-body">
+                                <div class="row align-items-center mb-1">
+                                    <div class="col">
+                                        <p>
+                                            <span class="h5">VÍ ĐIỆN TỬ MOMO</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-auto align-self-center">
+                                        <img src="~/Assets/images/momo.png" height="30px" alt="">
+                                    </div>
+                                </div>
+                                <p class="mb-1 small">CTK: <span class="text-theme">@accountMomo.Name</span></p>
+                                <p class="small mb-1">SDT: <span class="text-theme">@accountMomo.Phone</span>  <a href="javascript:void(0)" class="btn btn-theme size-10 py-1 px-2 ms-2  mb-2" id="btnCopyPhoneNumber" data-content="@accountMomo.Phone">copy</a></p>
+                                <p class="small mb-1">SỐ TIỀN: <span class="text-theme textPricesServicesHago"></span></p>
+                                <p class="small">NỘI DUNG: <span class="text-theme textSyntaxRechargePakageAnonymous"></span>  <a href="javascript:void(0)" class="btnCopyPakageSyntaxString btn btn-theme size-10 py-1 px-2 ms-2  mb-2" data-content="">copy</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="small mt-3">- Vui lòng chuyển số tiền cần mua gói quý tộc đến stk hoặc momo hiển thị phía trên.</p>
+                <p class="small ">- Phần nội dung chuyển khoản quý khách vui lòng ghi đúng như hướng dẫn: <span class="syntaxExample"></span>[dấu cách]id hago (Ví dụ: <span class="syntaxExample"></span> 666666666).</p>
+                <p class="small ">- Trường hợp chuyển sai nội dung. Vui lòng liên hệ zalo: 0962.711117 để xác thực và cộng tiền thủ công.</p>
+            </div>
+        </div>
+    </div>
+</div>
+

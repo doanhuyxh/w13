@@ -1,0 +1,30 @@
+﻿
+@model List<marketplace.Withdrawal>
+@{
+    Layout = null;
+}
+@if (Model != null && Model.Count > 0)
+{
+    foreach (var item in Model)
+    {
+        <li class="list-group-item size-15">
+            <p class="m-1">Mã đơn: <b class="float-end">@item.Id</b></p>
+            <p class="m-1">Thời gian: <b class="float-end">@item.CreatedDate.ToString("dd/MM/yyyys HH:mm:ss")</b></p>
+            <p class="m-1">Số tiền: <span class="float-end"><b class="text-danger">@PTEcommerce.Business.Helper.MoneyFormat(item.Amount)</b></span></p>
+            <p class="m-1">
+                Trạng thái: @if (item.Status == 1)
+                {
+                    <b class="text-primary float-end"></b>
+                }
+                else if (item.Status == 2)
+                {
+                    <b class="text-success float-end"></b>
+                }
+                else
+                {
+                    <b class="float-end"></b>
+                }
+            </p>
+        </li>
+    }
+}

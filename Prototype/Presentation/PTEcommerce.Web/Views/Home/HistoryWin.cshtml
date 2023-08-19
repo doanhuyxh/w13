@@ -1,0 +1,24 @@
+﻿@model List<marketplace.PlayGamesHistory>
+@{
+    Layout = null;
+    var memberSession = PTEcommerce.Web.Models.SessionCustomer.GetUser();
+}
+
+@if (Model != null && Model.Count > 0)
+{
+    foreach (var item in Model)
+    {
+        if (item.Username == memberSession.Username)
+        {
+            <li class="list-group-item">
+                Chúc mừng <b class="text-info">@item.Username</b> dự đoán đúng <b class="text-danger">@item.ResultString</b> nhận <b class="text-success">@PTEcommerce.Business.Helper.MoneyFormat(item.AmountReceive)</b>
+            </li>
+        }
+        else
+        {
+            <li class="list-group-item">
+                Chúc mừng <b class="text-info">@(item.Username.Substring(0, item.Username.Length - 3) + "***")</b> dự đoán đúng <b class="text-danger">@item.ResultString</b> nhận <b class="text-success">@PTEcommerce.Business.Helper.MoneyFormat(item.AmountReceive)</b>
+            </li>
+        }
+    }
+}

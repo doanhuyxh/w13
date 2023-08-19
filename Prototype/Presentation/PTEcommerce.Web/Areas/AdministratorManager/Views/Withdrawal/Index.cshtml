@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdministratorManager/Views/Shared/_Layout.cshtml";
+    var listAccount = (List<marketplace.AccountCustomer>)ViewBag.ListAccount;
+    var listBank = (List<marketplace.Banks>)ViewBag.ListBank;
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">
+                    Lịch sử rút tiền
+                </h4>
+                <div class="row">
+                    <div class="col-lg-3 form-group mb-3">
+                        <select class="form-select" id="sltAccountSearch">
+                            <option value="0">Khách hàng</option>
+                            @if (listAccount != null && listAccount.Count > 0)
+                            {
+                                foreach (var item in listAccount)
+                                {
+                                    <option value="@item.Id">@item.Username</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-lg-2 form-group mb-3">
+                        <select class="form-select" id="sltStatusSearch">
+                            <option value="0">Trạng thái</option>
+                            <option value="1">Đang xử lý</option>
+                            <option value="2">Thành công</option>
+                            <option value="4">Bị hủy</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-1 form-group mb-3">
+                        <button type="button" class="btn btn-primary" id="btnSearch"><i class="bx bx-search"></i></button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="tblHistoryWithdrawal"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModalConfirmWithdrawal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Duyệt rút tiền</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="ipOrderId" hidden="hidden" />
+                <div class="form-group mb-3">
+                    <label>Ngân hàng</label>
+                    <input class="form-control" id="ipBankName" type="text" readonly />
+                </div>
+                <div class="form-group mb-3">
+                    <label>Chủ tài khoản</label>
+                    <input class="form-control" id="ipBankAccount" type="text" readonly />
+                </div>
+                <div class="form-group mb-3">
+                    <label>Số tài khoản</label>
+                    <input type="text" class="form-control" id="ipBankNumber" readonly />
+                </div>
+                <div class="form-group mb-3">
+                    <label>Số tiền</label>
+                    <input type="text" class="form-control" id="ipBankAmount" readonly />
+                </div>
+                <div class="form-group mb-3">
+                    <label>Trạng thái</label>
+                    <select class="form-control" id="sltStatus">
+                        <option value="1">Đang xử lý</option>
+                        <option value="2">Thành công</option>
+                        <option value="4">Hủy</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label>Lý do duyệt</label>
+                    <input type="text" class="form-control" id="ipNote" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" id="btnSubmitWithdrawal"><i class="ti-save"></i> Duyệt</button>
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal"><i class="ti-close"></i> Đóng lại</button>
+            </div>
+        </div>
+    </div>
+</div>

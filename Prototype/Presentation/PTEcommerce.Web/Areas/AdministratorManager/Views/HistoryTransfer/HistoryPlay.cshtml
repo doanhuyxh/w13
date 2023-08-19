@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "HistoryPlay";
+    Layout = "~/Areas/AdministratorManager/Views/Shared/_Layout.cshtml";
+    var listAccount = (List<marketplace.AccountCustomer>)ViewBag.ListAccount;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">
+                    Lịch sử giao dịch
+                </h4>
+                <div class="row">
+                    <div class="row">
+                        <div class="col-lg-3 form-group mb-3">
+                            <select class="form-select" id="sltAccount">
+                                <option value="0">Khách hàng</option>
+                                @if (listAccount != null && listAccount.Count > 0)
+                                {
+                                    foreach (var item in listAccount)
+                                    {
+                                        <option value="@item.Id">@item.Username</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-lg-3 form-group mb-3">
+                            <button type="button" class="btn btn-primary" id="btnSearch"><i class="bx bx-search"></i></button>
+                        </div>
+                    </div>
+                    <table class="table table-bordered" id="tblPlayGame"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

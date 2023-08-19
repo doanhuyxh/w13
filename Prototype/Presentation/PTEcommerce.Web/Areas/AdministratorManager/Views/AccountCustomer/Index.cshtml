@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdministratorManager/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">
+                    Danh sách khách hàng
+                </h4>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 form-group mb-3">
+                        <div class=" input-group">
+                            <span class="input-group-text">Tìm kiếm</span>
+                            <input type="text" class="form-control" id="ipSearchString" placeholder="Nhập email, họ tên, id..." />
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-8 form-group mb-3">
+                        <button type="button" class="btn btn-primary" id="btnSearch"><i class="bx bx-search"></i> Tìm kiếm</button>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <table class="table table-bordered" id="tblAccount"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModalConfirmAddAmount" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Cộng/trừ tiền: <span id="UsernameAdd"></span></h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="ipAccount" hidden="hidden" />
+                <div class="form-group mb-3">
+                    <label>Số tiền</label>
+                    <input type="number" class="form-control" id="ipAmount" />
+                </div>
+                <div class="form-group mb-3">
+                    <label>Loại</label>
+                    <select class="form-control" id="sltType">
+                        <option value="1">Cộng tiền</option>
+                        <option value="2">Trừ tiền</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label>Lý do duyệt</label>
+                    <input type="text" class="form-control" id="ipNote" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" id="btnSubmitWithdrawal"><i class="ti-save"></i> Duyệt</button>
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal"><i class="ti-close"></i> Đóng lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModalConfirmChangePassword" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Đổi mật khẩu: <span id="UsernamePass"></span></h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="ipAccountPassword" hidden="hidden" />
+                <div class="form-group mb-3">
+                    <label>Mật khẩu mới</label>
+                    <input type="text" class="form-control" id="ipPasswordChange" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" id="btnSubmitChangePassword"><i class="ti-save"></i> Duyệt</button>
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal"><i class="ti-close"></i> Đóng lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+

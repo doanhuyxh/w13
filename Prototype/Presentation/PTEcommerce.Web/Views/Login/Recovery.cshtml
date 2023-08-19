@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Recovery";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="col position-relative page-content">
+
+    <!--background -->
+    <div class="coverimg center-autow-img h-100 w-100 start-0 top-0 position-absolute" style="background-image: url(&quot;assets/img/orange.png&quot;);">
+        <img src="~/Assets/images/bg-hago.png" alt="" style="display: none;">
+    </div>
+    <!--background ends -->
+    <!-- content page -->
+    <div class="row justify-content-center h-100">
+        <div class="col-12 col-md-6 col-lg-4 col-xxl-3 align-self-center">
+            <div class="card bg-blur border-0 mb-4">
+                <div class="card-body">
+                    <h5 class="text-center">LẤY LẠI MẬT KHẨU</h5>
+                    <!-- form elements -->
+                    <form>
+
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <span class="small">Hago ID</span>
+                                <input type="text" placeholder="Hago ID" id="txtVID" inputmode="numeric" class="form-control border-width-1" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <span class="small">Email đăng ký</span>
+                            <input type="email" placeholder="Email đăng ký" id="txtEmailAccount" class="form-control border-start-0">
+                        </div>
+
+                        <a href="javascript:void(0)" class="btn btn-theme btn-lg w-100 " id="btnRecoveryPassword">Lấy lại mật khẩu</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content page ends -->
+</div>
+<div class="col-12 footer-ht text-center mt-0">
+    <div class="row justify-content-center h-100">
+        <div class="col-12 col-md-6 col-lg-4 col-xxl-3 align-self-center">
+            <!-- footer -->
+            <footer class="footer row">
+                <div class="col-12 text-center">
+                    <p class="text-secondary">Đã có tài khoản Hagopay.com? <a href="/dang-nhap">Đăng nhập</a> ngay</p>
+                </div>
+            </footer>
+            <!-- footer -->
+        </div>
+    </div>
+</div>

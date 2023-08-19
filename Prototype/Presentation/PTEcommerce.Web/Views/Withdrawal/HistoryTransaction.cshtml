@@ -1,0 +1,48 @@
+﻿
+@model List<marketplace.WithdrawalExtend>
+@{
+    Layout = null;
+}
+@if (Model != null && Model.Count > 0)
+{
+    foreach (var item in Model)
+    {
+        var status = "Đang xử lý";
+        var icon = "bi bi-info-circle";
+        if (item.Status == 2)
+        {
+            status = "Thành công";
+            icon = "bi-check-circle";
+        }
+        else if (item.Status == 4)
+        {
+            status = "Đã bị hủy";
+            icon = "bi-x-circle";
+        }
+        <li class="list-group-item border-radius-10 p-1 size-15">
+            <p class="m-1">Mã đơn: <b class="float-end">@item.Id</b></p>
+            <p class="m-1">Chỉ tài khoản: <span class="float-end"><b>@item.BankAccount</b></span></p>
+            <p class="m-1">Số tài khoản: <b class="float-end">@item.BankNumber</b></p>
+            <p class="m-1">Số tiền: <span class="float-end"><b>@PTEcommerce.Business.Helper.MoneyFormat(item.Amount)</b></span></p>
+            <p class="m-1">
+                Trạng thái: <span class="float-end">
+                    @if (item.Status == 1)
+                    {
+                        <b class="text-primary">Đang xử lý</b>
+                    }
+                    else if (item.Status == 2)
+                    {
+                        <b class="text-success">Thành công</b>
+                    }
+                    else
+                    {
+                        <b class="text-danger">Thất bại</b>
+                    }
+                </span>
+            </p>
+            <p class="m-1">Thời gian: <b class="float-end">@item.CreatedDate.ToString("dd/MM HH:mm:ss")</b></p>
+
+        </li>
+    }
+}
+

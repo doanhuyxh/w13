@@ -1,0 +1,28 @@
+﻿@model List<marketplace.PlayGamesHistory>
+@{
+    Layout = null;
+}
+@if (Model != null && Model.Count > 0)
+{
+    foreach (var item in Model)
+    {
+        <li class="list-group-item size-15">
+            <p class="m-1">Phiên: <b class="float-end">@item.SessionId</b></p>
+            <p class="m-1">Thời gian: <b class="float-end">@item.CreatedDate.ToString("dd/MM HH:mm:ss")</b></p>
+            <p class="m-1">Chọn - Kết quả: <span class="float-end"><b class="text-danger">@PTEcommerce.Business.Helper.ConvertValue(item.Value).valuestring</b> - <b class="text-success">@(!string.IsNullOrEmpty(item.Result) ? PTEcommerce.Business.Helper.ConvertValue(item.Result).valuestring : "...")</b></span></p>
+            <p class="m-1">Dự đoán: <b class="float-end">@PTEcommerce.Business.Helper.MoneyFormat(item.Amount)</b></p>
+            <p class="m-1">
+                Phần thưởng: <span class="float-end">
+                    @if (item.AmountReceive > 0)
+                    {
+                        <b class="text-success">+ @PTEcommerce.Business.Helper.MoneyFormat(item.AmountReceive)</b>
+                    }
+                    else
+                    {
+                        <b class="text-danger">@(!string.IsNullOrEmpty(item.Result) ? "0đ" : "...")</b>
+                    }
+                </span>
+            </p>
+        </li>
+    }
+}

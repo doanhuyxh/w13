@@ -1,0 +1,21 @@
+﻿@model List<marketplace.PlayGamesHistory>
+@{
+    Layout = null;
+}
+@if (Model != null && Model.Count > 0)
+{
+    foreach (var item in Model)
+    {
+        <div class="swiper-slide">
+            <div class="card shadow-sm product mb-4">
+                <div class="card-body p-2">
+                    <p>Mã đơn: <span class="float-end">@item.Id</span></p>
+                    <p>Thời gian: <span class="float-end">@item.CreatedDate.ToString("HH:mm:ss")</span></p>
+                    <p>Đặt cược: <span class="float-end">@PTEcommerce.Business.Helper.MoneyFormat(item.Amount * PTEcommerce.Business.Helper.ConvertValue(item.Value).value.Count)</span></p>
+                    <p>Nhiệm vụ: <span class="float-end">@PTEcommerce.Business.Helper.ConvertValue(item.Value).valuestring</span></p>
+                    <p>Lợi nhuận: <span class="float-end">@(item.AmountReceive > 0 ? @PTEcommerce.Business.Helper.MoneyFormat(item.AmountReceive) : "Đang chờ")</span></p>
+                </div>
+            </div>
+        </div>
+    }
+}

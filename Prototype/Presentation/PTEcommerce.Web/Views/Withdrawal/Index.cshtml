@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var dataAccount = (marketplace.AccountCustomer)ViewBag.Account;
+    var listBank = (List<marketplace.Banks>)ViewBag.ListBank;
+}
+
+
+<div class="work-page info-user-page">
+    <!-- NAV START -->
+
+        <div class="info-user col-12">
+            <div class="col-3 avatar">
+                <img src="~/Assets/publics/images/avata.png" width="80%" alt="">
+            </div>
+            <div class="col-9 user-name">
+                <b>
+                    <a href="">@dataAccount.Username</a>
+                </b>
+                <p class="text-opac">Số dư: <span class="moneyReload"></span></p>
+            </div>
+        </div>
+        <div class="form">
+            <form>
+                <div class="item-input">
+                    <label for="sltBank" class="col-4">Ngân hàng:</label>
+                    <select class="col-8" id="sltBank">
+                        <option>Chọn ngân hàng</option>
+                        @if (listBank != null && listBank.Count > 0)
+                        {
+                            foreach (var item in listBank)
+                            {
+                                <option value="@item.Id" @(item.Id == dataAccount.BankId ? "selected" : "")>@item.BankName</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="item-input">
+                    <label class="col-4" for="inputBankNumber">Số tài khoản</label>
+                    <input type="text" class="col-8" value="@dataAccount.BankNumber" id="inputBankNumber">
+                </div>
+
+                <div class="item-input">
+                    <label class="col-4" for="inputBankNumber">Chủ tài khoản:</label>
+                    <input type="text" class="col-8" value="@dataAccount.BankAccount" id="inputBankAccount">
+                </div>
+
+                <div class="item-input">
+                    <label for="quantity" class="col-4">Số tiền rút:</label>
+                    <input step="10000" onchange="onChange()" inputmode="numeric" id="inputBankNumber" class="col-8">
+                </div>
+
+                <div class="item-button button-payment">
+                    <button id="btnWithdrawal">Xác nhận</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <!-- MAIN END -->
+
+
+

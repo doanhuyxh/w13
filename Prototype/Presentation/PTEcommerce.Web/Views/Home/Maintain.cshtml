@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Maintain";
+    Layout = "~/Views/Shared/_LayoutHistory.cshtml";
+    var mobile = Request.Browser.IsMobileDevice;
+    var notification = (marketplace.Notification)ViewBag.Notification;
+}
+<header class="header-history">
+    <div class="back-links">
+        <a href="/">
+            <img src="/Assets/images/logo.png" class="img-fluid main-logo" style="height: 30px" alt="">
+        </a>
+    </div>
+</header>
+<section class="top-space lg-space px-15 pt-0 @(mobile ? "section-history-mobile" : "section-history")">
+    <img src="~/Assets/images/maintain.png" width="100%" />
+    @if (notification != null)
+    {
+        @Html.Raw(notification.Content)
+    }
+    else
+    {
+        <h1 class="text-danger text-center mt-3 mb-3">Hagopay.com thông báo</h1>
+        <p class="text-center"><b>Website Hagopay tạm dừng hoạt động trong ít phút để nâng cấp hệ thống.</b></p>
+        <p class="text-center"><b>Xin cảm ơn quý khách đã chờ đợi.</b></p>
+        <p class="text-center"><b>Trân trọng!</b></p>
+        <p class="text-center"><b>Mọi thắc mắc xin liên hệ</b> </p>
+        <p class="text-center"><b class="text-danger">Hotline/Zalo: 0962.711117</b></p>
+    }
+
+</section>
+

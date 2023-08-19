@@ -1,0 +1,9 @@
+D:\Project\thaidavid_v2\Framework\3Party\Dapper\bin\Debug\Dapper.dll
+D:\Project\thaidavid_v2\Framework\3Party\Dapper\bin\Debug\Dapper.pdb
+D:\Project\thaidavid_v2\Framework\3Party\Dapper\bin\Debug\Enyim.Caching.dll
+D:\Project\thaidavid_v2\Framework\3Party\Dapper\bin\Debug\Enyim.Caching.xml
+D:\Project\thaidavid_v2\Framework\3Party\Dapper\obj\Debug\Dapper.csproj.AssemblyReference.cache
+D:\Project\thaidavid_v2\Framework\3Party\Dapper\obj\Debug\Dapper.csproj.CoreCompileInputs.cache
+D:\Project\thaidavid_v2\Framework\3Party\Dapper\obj\Debug\Dapper.csproj.CopyComplete
+D:\Project\thaidavid_v2\Framework\3Party\Dapper\obj\Debug\Dapper.dll
+D:\Project\thaidavid_v2\Framework\3Party\Dapper\obj\Debug\Dapper.pdb

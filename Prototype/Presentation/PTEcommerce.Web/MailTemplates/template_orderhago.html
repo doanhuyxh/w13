@@ -1,0 +1,170 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Hago</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <style>
+        .text-overflow {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+
+        .child-history {
+            margin-bottom: 20px;
+        }
+
+        .date-history {
+            padding: 0 5px 5px 5px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .child-content {
+            border-radius: 20px;
+            padding: 10px 0 0 0;
+        }
+
+            .child-content:last-child {
+                padding: 10px 0 10px 0;
+            }
+
+        .content-body {
+            border-radius: 6px;
+            padding: 10px;
+            background-color: #fff
+        }
+
+        .child-1 {
+            border-bottom: 1px solid #f3f3f3;
+            align-items: center;
+            color: #000;
+            padding-bottom: 5px;
+        }
+
+        .child-11 img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        .child-11 span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: normal;
+            white-space: nowrap;
+            color: #2b3036;
+            padding-left: 6px;
+            font-size: 18px;
+        }
+
+        .child-12 img {
+            width: 18px;
+            height: auto;
+        }
+
+        .child-122 {
+            padding-left: 8px;
+            font-size: 18px;
+            word-break: normal;
+        }
+
+        .child-2 {
+            padding: 10px 0 0 0;
+            color: #2b3036;
+            font-size: 15px;
+        }
+
+        .child-21 {
+            align-items: center;
+            padding-bottom: 10px;
+        }
+
+        .child-22 {
+            align-items: center;
+        }
+
+        .section-history {
+            background-color: #F3F3F3;
+            margin: 0 calc(1.5rem * 0.5);
+            padding: 0 calc(1.5rem * 0.5);
+            font-family: "Open Sans", sans-serif;
+        }
+
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section-history">
+        <div class="justify-content-center" id="order-history">
+            <div class="child-content">
+                <div class="date-history">
+                    {Time}
+                </div>
+                <div class="content-body">
+                    <div class="child-1">
+                        <table style="width: 100%">
+                            <tbody>
+                                <tr>
+                                    <td style="width:40px">
+                                        <img src="{Avatar}" style="width: 30px; height: 30px; border-radius: 50%" />
+                                    </td>
+                                    <td style="width: 300px">
+                                        <span style=" overflow: hidden; text-overflow: ellipsis; word-wrap: normal; white-space: nowrap; color: #2b3036; padding-left: 6px; font-size: 18px;">{Nick}</span>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <img src="https://static.ihago.net/a/recharge-of-agent/__canary__/assets/img/dia-c63a96f7eb.svg" width="15px" />
+                                        <span style="font-size: 18px">-{Diamond}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="child-2">
+                        <div class="child-21">
+                            <table style="width: 100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 40%">
+                                            <span style="color: hsla(0, 0%, 60%, .7);">ID người dùng</span>
+                                        </td>
+                                        <td style="text-align: right">
+                                            <span>{HagoID}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                        <div class="child-22">
+                            <table style="width: 100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:40%">
+                                            <span style="color: hsla(0, 0%, 60%, .7);">Nội dung</span>
+                                        </td>
+                                        <td style="text-align: right">
+                                            <span>{Content}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

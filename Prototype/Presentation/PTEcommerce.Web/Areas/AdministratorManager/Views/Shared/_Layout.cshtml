@@ -1,0 +1,223 @@
+﻿
+@{
+    var controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+    var memss = PTEcommerce.Web.Models.SessionAdmin.GetUser();
+}
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <title>Trang quản trị</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/Areas/AdministratorManager/Assets/images/favicon.ico">
+    <link href="~/Areas/AdministratorManager/Assets/libs/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <!-- Bootstrap Css -->
+    <link href="~/Areas/AdministratorManager/Assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="~/Areas/AdministratorManager/Assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Areas/AdministratorManager/Assets/libs/select2/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link href="~/Areas/AdministratorManager/Assets/libs/toastr/build/toastr.min.css" rel="stylesheet" />
+    <link href="~/Areas/AdministratorManager/Assets/libs/chenfengyuan/datepicker/datepicker.min.css" rel="stylesheet" />
+    <link href="~/Areas/AdministratorManager/Assets/libs/bootstrap-table/css/bootstrap-table.min.css" rel="stylesheet" />
+    <!-- App Css-->
+    <link href="~/Areas/AdministratorManager/Assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    @RenderSection("css", required: false)
+</head>
+
+<body data-topbar="dark">
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <!-- LOGO -->
+                    <div class="navbar-brand-box">
+                        <a href="/" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="~/Assets/assets/images/loading.png" alt="" height="30">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="~/Assets/assets/images/HAMEDIA.png" alt="" height="35">
+                            </span>
+                        </a>
+
+                        <a href="/" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="~/Assets/assets/images/loading.png" alt="" height="30">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="~/Assets/assets/images/HAMEDIA.png" alt="" height="35">
+                            </span>
+                        </a>
+                    </div>
+
+                    <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
+                        <i class="fa fa-fw fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="d-flex">
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="~/Assets/assets/images/Avatar12.png"
+                                 alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1" key="t-henry">@(memss != null ? memss.FullName : "")</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <!-- item-->
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-primary" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#myModalChangePasswordAdmin"><i class="bx bx-key font-size-16 align-middle me-1 text-primary"></i> <span key="t-logout">Đổi mật khẩu</span></a>
+                            <a class="dropdown-item text-danger" href="/AdministratorManager/Logout"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Đăng xuất</span></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
+
+            <div data-simplebar class="h-100">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li>
+                            <a href="/AdministratorManager/Dashboard/Index" class="waves-effect">
+                                <i class="bx bx-home"></i>
+                                <span key="t-dashboards">Tổng quan</span>
+                            </a>
+                        </li>
+                        <li class="menu-title" key="t-menu">Chức năng chính</li>
+                        <li>
+                            <a href="/AdministratorManager/AccountCustomer/Index" class="waves-effect">
+                                <i class="bx bxs-user-voice"></i>
+                                <span key="t-dashboards">Khách hàng</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/AdministratorManager/Withdrawal/Index" class="waves-effect">
+                                <i class="bx bxs-bank"></i>
+                                <span id="alertWithdrawal" class="badge rounded-pill bg-danger float-end"></span>
+                                <span key="t-dashboards">Lịch sử rút tiền</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/AdministratorManager/HistoryTransfer/HistoryPlay" class="waves-effect">
+                                <i class="bx bxs-user-detail"></i>
+                                <span key="t-dashboards">Lịch sử chơi</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/AdministratorManager/HistoryTransfer/Index" class="waves-effect">
+                                <i class="bx bx-history"></i>
+                                <span key="t-dashboards">Biến động số dư</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/AdministratorManager/Setting/Index" class="waves-effect">
+                                <i class="bx bxs-cog"></i>
+                                <span key="t-dashboards">Cấu hình hệ thống</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                @RenderBody()
+            </div>
+            <!-- End Page-content -->
+            <!-- Modal -->
+            <!-- end modal -->
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>document.write(new Date().getFullYear())</script> © <span class="text-danger">PE88</span>.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Design & Develop by PE88
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <div class="rightbar-overlay"></div>
+
+    <div id="myModalChangePasswordAdmin" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Đổi mật khẩu admin</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mb-3">
+                        <label>Mật khẩu mới</label>
+                        <input type="password" class="form-control" id="passwordAdmin" placeholder="Nhập mật khẩu mới..." />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>LMật khẩu mới</label>
+                        <input type="password" class="form-control" id="repasswordAdmin" placeholder="Xác nhận mật khẩu..." />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" id="btnUpdatePasswordAdmin"><i class="ti-save"></i> Đổi mật khẩu</button>
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal"><i class="ti-close"></i> Đóng lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="~/Areas/AdministratorManager/Assets/libs/jquery/jquery.min.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/libs/bootstrap-editable/js/index.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/libs/node-waves/waves.min.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/libs/bootstrap-table/js/bootstrap-table.min.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/libs/chenfengyuan/datepicker/datepicker.min.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/libs/select2/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/libs/toastr/build/toastr.min.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/js/controller/accounting.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/js/controller/base.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/js/pages/form-xeditable.init.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="~/Areas/AdministratorManager/Assets/js/app.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.3.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Areas/AdministratorManager/Assets/js/controller/@(controller).js?v=@DateTime.Now.ToString("yyyyMMddHHmmss")"></script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>
