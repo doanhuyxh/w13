@@ -2,80 +2,84 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    @*@using marketplace;
+    int count = (ViewBag.playGamesTop10 as List<PlayGamesHistory>).Count;*@
+
 }
-    <div class="banner swiper mySwiper">
+<div class="banner swiper mySwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
+
+<div class="game">
+    <b>Nhiệm vụ</b>
+    <div class="list-mini-game">
+        <div class="item-mini">
+            <div class="top">
+                <button>
+                    <a href="/choi-game">
+                        <img src="/Assets/publics/images/youtobe.png" alt="" width="100%">
+                    </a>
+                </button>
+            </div>
+        </div>
+        <div class="item-mini">
+            <div class="top">
+                <button>
+                    <a href="/choi-game">
+                        <img src="/Assets/publics/images/insta.png" alt="" width="100%">
+                    </a>
+                </button>
+            </div>
+        </div>
+        <div class="item-mini">
+            <div class="top">
+                <button>
+                    <a href="/choi-game">
+                        <img src="/Assets/publics/images/tiktok.png" alt="" width="100%">
+                    </a>
+                </button>
+            </div>
+        </div>
+        <div class="item-mini">
+            <div class="top">
+                <button>
+                    <a href="/choi-game">
+                        <img src="/Assets/publics/images/zing.png" alt="" width="100%">
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="list-donate">
+    <b class="title">đơn donate gần đây</b>
+
+    <div class="swiper mySwiper donate">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
-            </div>
-            <div class="swiper-slide">
-                <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
-            </div>
-            <div class="swiper-slide">
-                <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
-            </div>
-            <div class="swiper-slide">
-                <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
-            </div>
-            <div class="swiper-slide">
-                <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
-            </div>
-            <div class="swiper-slide">
-                <img src="~/Assets/publics/images/banner.png" width="100%" alt="">
-            </div>
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
-
-
-    <div class="game">
-        <b>Nhiệm vụ</b>
-        <div class="list-mini-game">
-            <div class="item-mini">
-                <div class="top">
-                    <button>
-                        <a href="/choi-game">
-                            <img src="/Assets/publics/images/youtobe.png" alt="" width="100%">
-                        </a>
-                    </button>
-                </div>
-            </div>
-            <div class="item-mini">
-                <div class="top">
-                    <button>
-                        <a href="/choi-game">
-                            <img src="/Assets/publics/images/insta.png" alt="" width="100%">
-                        </a>
-                    </button>
-                </div>
-            </div>
-            <div class="item-mini">
-                <div class="top">
-                    <button>
-                        <a href="/choi-game">
-                            <img src="/Assets/publics/images/tiktok.png" alt="" width="100%">
-                        </a>
-                    </button>
-                </div>
-            </div>
-            <div class="item-mini">
-                <div class="top">
-                    <button>
-                        <a href="/choi-game">
-                            <img src="/Assets/publics/images/zing.png" alt="" width="100%">
-                        </a>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="list-donate">
-        <b class="title">đơn donate gần đây</b>
-
-        <div class="swiper mySwiper donate">
-            <div class="swiper-wrapper">
+            
                 <div class="item-order swiper-slide col-4">
                     <div class="detail-item">
                         <b class="col-5">Mã đơn:</b>
@@ -120,94 +124,78 @@
                         <p class="col-7">13.000</p>
                     </div>
                 </div>
-                <div class="item-order swiper-slide col-4">
-                    <div class="detail-item">
-                        <b class="col-5">Mã đơn:</b>
-                        <p class="col-7">SM-1236-CS</p>
+           
+           
+                @*@foreach (var item in ViewBag.playGamesTop10)
+                {
+                    <div class="item-order swiper-slide col-4">
+                        <div class="detail-item">
+                            <b class="col-5">Mã đơn:</b>
+                            <p class="col-7">@item.SessionId</p>
+                        </div>
+                        <div class="detail-item">
+                            <b class="col-5">Thời gian:</b>
+                            <p class="col-7">@item.CreatedDate</p>
+                        </div>
+                        <div class="detail-item">
+                            <b class="col-5">Đặt cược:</b>
+                            <p class="col-7">@item.Amount</p>
+                        </div>
+                        <div class="detail-item">
+                            <b class="col-5">Nhiệm vụ:</b>
+                            <p class="col-7">@item.ValueString</p>
+                        </div>
+                        <div class="detail-item">
+                            <b class="col-5">Lợi nhuận:</b>
+                            <p class="col-7">@item.TotalRow</p>
+                        </div>
                     </div>
-                    <div class="detail-item">
-                        <b class="col-5">Thời gian:</b>
-                        <p class="col-7">2023-07-05 12:16</p>
-                    </div>
-                    <div class="detail-item">
-                        <b class="col-5">Đặt cược:</b>
-                        <p class="col-7">100.000 đ</p>
-                    </div>
-                    <div class="detail-item">
-                        <b class="col-5">Nhiệm vụ:</b>
-                        <p class="col-7">xem tiktok</p>
-                    </div>
-                    <div class="detail-item">
-                        <b class="col-5">Lợi nhuận:</b>
-                        <p class="col-7">20.000</p>
-                    </div>
-                </div>
-                <div class="item-order swiper-slide col-4">
-                    <div class="detail-item">
-                        <b class="col-5">Mã đơn:</b>
-                        <p class="col-7">SM-1237-CS</p>
-                    </div>
-                    <div class="detail-item">
-                        <b class="col-5">Thời gian:</b>
-                        <p class="col-7">2023-07-09 04:05</p>
-                    </div>
-                    <div class="detail-item">
-                        <b class="col-5">Đặt cược:</b>
-                        <p class="col-7">100.000 đ</p>
-                    </div>
-                    <div class="detail-item">
-                        <b class="col-5">Nhiệm vụ:</b>
-                        <p class="col-7">nghe nhạc</p>
-                    </div>
-                    <div class="detail-item">
-                        <b class="col-5">Lợi nhuận:</b>
-                        <p class="col-7">22.000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+                }*@
+            
         </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
+</div>
 
-    <div class="messager">
-        <div class="content">
-            <div class="list-btn">
-                <button class="btn-all btn-item active">Tất cả</button>
-                <button class="btn-user btn-item">Của tôi</button>
+<div class="messager">
+    <div class="content">
+        <div class="list-btn">
+            <button class="btn-all btn-item active">Tất cả</button>
+            <button class="btn-user btn-item">Của tôi</button>
+        </div>
+
+        <div class="list-content">
+            <div class="item-content">
+                <p>Chúc mừng <b>Lê Bảo An</b> hoàn thành nhiệm vụ và nhận được <b>12.000.000đ</b></p>
             </div>
-
-            <div class="list-content">
-                <div class="item-content">
-                    <p>Chúc mừng <b>Lê Bảo An</b> hoàn thành nhiệm vụ và nhận được <b>12.000.000đ</b></p>
-                </div>
-                <div class="item-content">
-                    <p>Chúc mừng <b>Phạm Gia Phúc</b> hoàn thành nhiệm vụ và nhận được <b>32.000.000đ</b></p>
-                </div>
-                <div class="item-content">
-                    <p>Chúc mừng <b>Đỗ Quốc Bảo</b> hoàn thành nhiệm vụ và nhận được <b>8.000.000đ</b></p>
-                </div>
-                <div class="item-content">
-                    <p>Chúc mừng <b>Lê Bảo Trân</b> hoàn thành nhiệm vụ và nhận được <b>2.000.000đ</b></p>
-                </div>
-                <div class="item-content">
-                    <p>Chúc mừng <b>Lê Đan Tú</b> hoàn thành nhiệm vụ và nhận được <b>34.000.000đ</b></p>
-                </div>
-                <div class="item-content">
-                    <p>Chúc mừng <b>Nguyễn Tùng Chi</b> hoàn thành nhiệm vụ và nhận được <b>39.000.000đ</b></p>
-                </div>
-                <div class="item-content">
-                    <p>Chúc mừng <b>Phạm Diệu Anh</b> hoàn thành nhiệm vụ và nhận được <b>22.000.000đ</b></p>
-                </div>
-                <div class="item-content">
-                    <p>Chúc mừng <b>Nguyễn Hoàng Duy Cường</b> hoàn thành nhiệm vụ và nhận được <b>32.000.000đ</b></p>
-                </div>
-                <div class="item-content">
-                    <p>Chúc mừng <b>Phạm Hùng Cường</b> hoàn thành nhiệm vụ và nhận được <b>19.000.000đ</b></p>
-                </div>
-                <div class="item-content">
-                    <p>Chúc mừng <b>Phạm Hữu Đạt</b> hoàn thành nhiệm vụ và nhận được <b>35.000.000đ</b></p>
-                </div>
+            <div class="item-content">
+                <p>Chúc mừng <b>Phạm Gia Phúc</b> hoàn thành nhiệm vụ và nhận được <b>32.000.000đ</b></p>
+            </div>
+            <div class="item-content">
+                <p>Chúc mừng <b>Đỗ Quốc Bảo</b> hoàn thành nhiệm vụ và nhận được <b>8.000.000đ</b></p>
+            </div>
+            <div class="item-content">
+                <p>Chúc mừng <b>Lê Bảo Trân</b> hoàn thành nhiệm vụ và nhận được <b>2.000.000đ</b></p>
+            </div>
+            <div class="item-content">
+                <p>Chúc mừng <b>Lê Đan Tú</b> hoàn thành nhiệm vụ và nhận được <b>34.000.000đ</b></p>
+            </div>
+            <div class="item-content">
+                <p>Chúc mừng <b>Nguyễn Tùng Chi</b> hoàn thành nhiệm vụ và nhận được <b>39.000.000đ</b></p>
+            </div>
+            <div class="item-content">
+                <p>Chúc mừng <b>Phạm Diệu Anh</b> hoàn thành nhiệm vụ và nhận được <b>22.000.000đ</b></p>
+            </div>
+            <div class="item-content">
+                <p>Chúc mừng <b>Nguyễn Hoàng Duy Cường</b> hoàn thành nhiệm vụ và nhận được <b>32.000.000đ</b></p>
+            </div>
+            <div class="item-content">
+                <p>Chúc mừng <b>Phạm Hùng Cường</b> hoàn thành nhiệm vụ và nhận được <b>19.000.000đ</b></p>
+            </div>
+            <div class="item-content">
+                <p>Chúc mừng <b>Phạm Hữu Đạt</b> hoàn thành nhiệm vụ và nhận được <b>35.000.000đ</b></p>
             </div>
         </div>
     </div>
+</div>

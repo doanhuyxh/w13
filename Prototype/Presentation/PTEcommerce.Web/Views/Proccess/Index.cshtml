@@ -3,85 +3,94 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<input type="text" id="valueTimeCountDown" hidden />
-<input type="text" id="sessionCurrent" hidden />
-<div class="main">
-
-    <div class="item-game">
-        <div class="left col-8">
-            <b>Kết quả gần nhất</b>
+<div class="container-fluid">
+    <div class="main" style="padding-top: 0 !important">
+        <div class="item-game">
+            <div class="left col-8">
+                <b>Kết quả gần nhất</b>
+            </div>
+            <div class="right col-4">
+                <p id="resultSession1"></p>
+                <div class="line"></div>
+                <p id="resultSession2"></p>
+            </div>
         </div>
-        <div class="right col-4">
-            <p id="resultSession1"></p>
-            <div class="line"></div>
-            <p id="resultSession2"></p>
+
+        <div class="item-game">
+            <div class="left col-8">
+                <b>Phiên đang chạy</b>
+            </div>
+            <div class="right col-4">
+                <p id="sessionName"></p>
+                <div class="line"></div>
+                <p id="timeCountDown"></p>
+            </div>
+        </div>
+
+        <div class="list-mini-game">
+            <div class="item-mini">
+                <div class="top">
+                    <button>
+                        <img src="/Assets/publics/images/youtobe.png" alt="" width="100%">
+                    </button>
+                </div>
+                <div class="bottom">
+                    <b>Lớn</b>
+                </div>
+            </div>
+            <div class="item-mini">
+                <div>
+                    <button>
+                        <img src="/Assets/publics/images/insta.png" alt="" width="100%">
+                    </button>
+                </div>
+                <div class="bottom">
+                    <b>NHỎ</b>
+                </div>
+            </div>
+            <div class="item-mini">
+                <div class="top">
+                    <button>
+                        <img src="/Assets/publics/images/tiktok.png" alt="" width="100%">
+                    </button>
+                </div>
+                <div class="bottom">
+                    <b>Đôi</b>
+                </div>
+            </div>
+            <div class="item-mini">
+                <div class="top">
+                    <button>
+                        <img src="/Assets/publics/images/zing.png" alt="" width="100%">
+                    </button>
+                </div>
+                <div class="bottom">
+                    <b>Đơn</b>
+                </div>
+            </div>
+        </div>
+        <input type="text" id="valueTimeCountDown" hidden />
+        <input type="text" id="sessionCurrent" hidden />
+
+        <div class="result mt-3" style="">
+            <div class="title">
+                <b>Kết quả</b>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow-sm product mb-3">
+                            <div class="card-body p-0">
+                                <h4 class="text-dark pt-2 ps-2">Lịch sử chơi</h4>
+                                <div class=" h-400 overflow-scroll">
+                                    <ul class="list-group list-group-flush bg-none px-2" id="listHistoryPlayGames">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="item-game">
-        <div class="left col-8">
-            <b>Phiên đang chạy</b>
-        </div>
-        <div class="right col-4">
-            <p id="sessionName"></p>
-            <div class="line"></div>
-            <p id="timeCountDown"></p>
-        </div>
-    </div>
-
-    <div class="list-mini-game">
-        <div class="item-mini">
-            <div class="top">
-                <button>
-                    <img src="/Assets/publics/images/youtobe.png" alt="" width="100%">
-                </button>
-            </div>
-            <div class="bottom">
-                <b>Lớn</b>
-                <p>(Mã)</p>
-            </div>
-        </div>
-        <div class="item-mini">
-            <div>
-                <button>
-                    <img src="/Assets/publics/images/insta.png" alt="" width="100%">
-                </button>
-            </div>
-            <div class="bottom">
-                <b>NHỎ</b>
-                <p>(Mã)</p>
-            </div>
-        </div>
-        <div class="item-mini">
-            <div class="top">
-                <button>
-                    <img src="/Assets/publics/images/tiktok.png" alt="" width="100%">
-                </button>
-            </div>
-            <div class="bottom">
-                <b>Đôi</b>
-                <p>(Mã)</p>
-            </div>
-        </div>
-        <div class="item-mini">
-            <div class="top">
-                <button>
-                    <img src="/Assets/publics/images/zing.png" alt="" width="100%">
-                </button>
-            </div>
-            <div class="bottom">
-                <b>Đơn</b>
-                <p>(Mã)</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="result">
-        <div class="title">
-            <b>Kết quả</b>
-        </div>
-    </div>
-
-
 </div>
+
 <!-- MAIN END -->

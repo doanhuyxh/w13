@@ -1,4 +1,5 @@
-﻿using Framework.EF;
+﻿using DocumentFormat.OpenXml.Math;
+using Framework.EF;
 using Framework.Helper.Logging;
 using marketplace;
 using PTEcommerce.Business;
@@ -36,7 +37,8 @@ namespace PTEcommerce.Web.Controllers
         }
         public ActionResult History()
         {
-            return View();
+            var data = withdrawal.ListAllPagingByCustomer(memberSession.AccID, 1, 10);
+            return View(data);
         }
         public ActionResult HistoryTransaction(int offset, int limit = 10)
         {
