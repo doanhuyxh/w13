@@ -1,6 +1,6 @@
-﻿@model List<marketplace.PlayGamesHistory>
+﻿@model List<marketplace.HistoryTransfer>
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
     ViewBag.Title = "HistoryOrder";
 }
 <div class="container-fluid">
@@ -12,39 +12,24 @@
 
             <div class="item-order">
                 <div class="detail-item">
-                    <b>Phiên</b>
-                    <p>@item.SessionId</p>
+                    <b>Đơn hàng: </b>
+                    <p>@item.Id</p>
                 </div>
                 <div class="detail-item">
-                    <b>Thời gian:</b>
+                    <b>Thời gian: </b>
                     <p>@item.CreatedDate.ToString("dd/MM HH:mm:ss")</p>
                 </div>
                 <div class="detail-item">
-                    <b>Chọn - Kết quả:</b>
-                    <p><span class="float-end"><b class="text-danger">@PTEcommerce.Business.Helper.ConvertValue(item.Value).valuestring</b> - <b class="text-success">@(!string.IsNullOrEmpty(item.Result) ? PTEcommerce.Business.Helper.ConvertValue(item.Result).valuestring : "...")</b></span></p>
+                    <b>Dự đoán: </b>
+                    <p><span class="float-end">@item.Note</span></p>
                 </div>
                 <div class="detail-item">
-                    <b>Dự đoán</b>
-                    <p>@PTEcommerce.Business.Helper.MoneyFormat(item.Amount)</p>
-                </div>
-                <div class="detail-item">
-                    <b>Phần thưởng</b>
+                    <b>Phần thưởng: </b>
                     <p>
                         <span class="float-end">
-                            @if (item.AmountReceive > 0)
-                            {
-                                <b class="text-success">+ @PTEcommerce.Business.Helper.MoneyFormat(item.AmountReceive)</b>
-                            }
-                            else
-                            {
-                                <b class="text-danger">@(!string.IsNullOrEmpty(item.Result) ? "0đ" : "...")</b>
-                            }
+                            <b class="text-success">@PTEcommerce.Business.Helper.MoneyFormat(item.AmountAfter)</b>
                         </span>
                     </p>
-                </div>
-                <div class="detail-item">
-                    <b></b>
-                    <p></p>
                 </div>
             </div>
 

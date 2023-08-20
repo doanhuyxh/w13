@@ -97,8 +97,8 @@ namespace PTEcommerce.Web.Controllers
         }
         public ActionResult HistoryOrder()
         {
-            ViewBag.hs = playGames.GetListPlayGameByMe(memberSession.AccID, 10, 10);
-            return View();
+            var data = historyTransfer.GetAllTranferByUser(memberSession.AccID);
+            return View(data);
         }
         public ActionResult GetHistoryOrder(int offset)
         {

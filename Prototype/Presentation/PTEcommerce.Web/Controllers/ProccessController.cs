@@ -93,7 +93,7 @@ namespace PTEcommerce.Web.Controllers
         [Throttle]
         public JsonResult PlayGames(PlayGamePost data)
         {
-            var priceMin = 1;// string.IsNullOrEmpty(settings.GetValueByKey("pricemin").Value) ? 0 : decimal.Parse(settings.GetValueByKey("pricemin").Value);
+            var priceMin = string.IsNullOrEmpty(settings.GetValueByKey("pricemin").Value) ? 0 : decimal.Parse(settings.GetValueByKey("pricemin").Value);
             if (string.IsNullOrEmpty(data.value))
             {
                 return Json(new
@@ -136,22 +136,22 @@ namespace PTEcommerce.Web.Controllers
                     msg = "Phiên dự đoán không tồn tại"
                 }, JsonRequestBehavior.AllowGet);
             }
-            if(sessionData.CreatedDate.AddSeconds(90) <= DateTime.Now)
-            {
-                return Json(new
-                {
-                    status = false,
-                    msg = "Phiên dự đoán đã kết thúc"
-                }, JsonRequestBehavior.AllowGet);
-            }
-            if(sessionData.CreatedDate.AddSeconds(85) <= DateTime.Now)
-            {
-                return Json(new
-                {
-                    status = false,
-                    msg = "Phiên ngừng nhận dự đoán"
-                }, JsonRequestBehavior.AllowGet);
-            }
+            //if (sessionData.CreatedDate.AddSeconds(90) <= DateTime.Now)
+            //{
+            //    return Json(new
+            //    {
+            //        status = false,
+            //        msg = "Phiên dự đoán đã kết thúc"
+            //    }, JsonRequestBehavior.AllowGet);
+            //}
+            //if (sessionData.CreatedDate.AddSeconds(85) <= DateTime.Now)
+            //{
+            //    return Json(new
+            //    {
+            //        status = false,
+            //        msg = "Phiên ngừng nhận dự đoán"
+            //    }, JsonRequestBehavior.AllowGet);
+            //}
             var dataAccount = accountCustomer.GetById(memberSession.AccID);
             if(dataAccount == null)
             {

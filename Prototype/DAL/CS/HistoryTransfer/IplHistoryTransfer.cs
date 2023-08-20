@@ -66,6 +66,22 @@ namespace marketplace
                 return null;
             }
         }
-        
+
+        public List<HistoryTransfer> GetAllTranferByUser(int idAccount)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@AccountId", idAccount);
+                var data = unitOfWork.Procedure<HistoryTransfer>("GetHistoryTransfersByAccountId", p).ToList();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                return null;
+            }
+        }
+
     }
 }

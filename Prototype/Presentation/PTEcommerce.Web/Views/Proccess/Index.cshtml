@@ -31,7 +31,7 @@
             <div class="item-mini">
                 <div class="top">
                     <label for="checkMax">
-                        <img src="/Assets/publics/images/youtobe.png" alt="" width="100%">
+                        <img src="/Assets/publics/images/youtobe.png" id="img_Max" alt="" width="100%">
                         <input type="checkbox" name="checkMax" id="checkMax" hidden />
                     </label>
                 </div>
@@ -42,7 +42,7 @@
             <div class="item-mini">
                 <div>
                     <label for="checkMin">
-                        <img src="/Assets/publics/images/insta.png" alt="" width="100%">
+                        <img src="/Assets/publics/images/insta.png" id="img_Min" alt="" width="100%">
                         <input id="checkMin" name="checkMin" type="checkbox" hidden />
                     </label>
                 </div>
@@ -53,7 +53,7 @@
             <div class="item-mini">
                 <div class="top">
                     <label for="checkDouble">
-                        <img src="/Assets/publics/images/tiktok.png" alt="" width="100%">
+                        <img src="/Assets/publics/images/tiktok.png" id="img_D" alt="" width="100%">
                         <input id="checkDouble" name="checkDouble" type="checkbox" hidden />
                     </label>
                 </div>
@@ -64,7 +64,7 @@
             <div class="item-mini">
                 <div class="top">
                     <label for="checkSingle">
-                        <img src="/Assets/publics/images/zing.png" alt="" width="100%">
+                        <img src="/Assets/publics/images/zing.png" id="img_S" alt="" width="100%">
                         <input id="checkSingle" name="checkSingle" type="checkbox" hidden />
                     </label>
                 </div>
@@ -114,7 +114,7 @@
 <!-- MAIN END -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var label1 = document.querySelector("label[for='checkMax']");
+        var label1 = document.getElementById("img_Max");
         var bottomElement1 = document.querySelector(".btn_max");
         label1.addEventListener("click", function (e) {
             e.stopPropagation();
@@ -122,15 +122,15 @@
             return;
         });
 
-        var label2 = document.querySelector("label[for='checkSingle']");
-        var bottomElement2 = document.querySelector(".btn_single");
+        var label2 = document.getElementById("img_Min");
+        var bottomElement2 = document.querySelector(".btn_min");
         label2.addEventListener("click", function (e) {
             e.stopPropagation();
             bottomElement2.classList.toggle("bg-success");
             return;
         });
 
-        var label3 = document.querySelector("label[for='checkDouble']");
+        var label3 = document.getElementById("img_D");
         var bottomElement3 = document.querySelector(".btn_doucble");
         label3.addEventListener("click", function (e) {
             e.stopPropagation();
@@ -138,8 +138,8 @@
             return;
         });
 
-        var label4 = document.querySelector("label[for='checkMin']");
-        var bottomElement4 = document.querySelector(".btn_min");
+        var label4 = document.getElementById("img_S");
+        var bottomElement4 = document.querySelector(".btn_single");
         label4.addEventListener("click", function (e) {
             e.stopPropagation();
             bottomElement4.classList.toggle("bg-success");
