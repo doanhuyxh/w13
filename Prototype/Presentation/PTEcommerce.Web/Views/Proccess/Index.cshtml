@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container-fluid">
-    <div class="main" style="padding-top: 0 !important">
+    <div class="main" style="padding-top: 0 !important; width:100%; overflow:hidden">
         <div class="item-game">
             <div class="left col-8">
                 <b>Kết quả gần nhất</b>
@@ -30,47 +30,65 @@
         <div class="list-mini-game">
             <div class="item-mini">
                 <div class="top">
-                    <button>
+                    <label for="checkMax">
                         <img src="/Assets/publics/images/youtobe.png" alt="" width="100%">
-                    </button>
+                        <input type="checkbox" name="checkMax" id="checkMax" hidden />
+                    </label>
                 </div>
-                <div class="bottom">
+                <div class="bottom btn_max">
                     <b>Lớn</b>
                 </div>
             </div>
             <div class="item-mini">
                 <div>
-                    <button>
+                    <label for="checkMin">
                         <img src="/Assets/publics/images/insta.png" alt="" width="100%">
-                    </button>
+                        <input id="checkMin" name="checkMin" type="checkbox" hidden />
+                    </label>
                 </div>
-                <div class="bottom">
+                <div class="bottom btn_min">
                     <b>NHỎ</b>
                 </div>
             </div>
             <div class="item-mini">
                 <div class="top">
-                    <button>
+                    <label for="checkDouble">
                         <img src="/Assets/publics/images/tiktok.png" alt="" width="100%">
-                    </button>
+                        <input id="checkDouble" name="checkDouble" type="checkbox" hidden />
+                    </label>
                 </div>
-                <div class="bottom">
-                    <b>Đôi</b>
+                <div class="bottom btn_doucble">
+                    <b class="active">Đôi</b>
                 </div>
             </div>
             <div class="item-mini">
                 <div class="top">
-                    <button>
+                    <label for="checkSingle">
                         <img src="/Assets/publics/images/zing.png" alt="" width="100%">
-                    </button>
+                        <input id="checkSingle" name="checkSingle" type="checkbox" hidden />
+                    </label>
                 </div>
-                <div class="bottom">
+                <div class="bottom btn_single">
                     <b>Đơn</b>
                 </div>
             </div>
         </div>
         <input type="text" id="valueTimeCountDown" hidden />
         <input type="text" id="sessionCurrent" hidden />
+
+        <div class="row mt-3 mb-3">
+            <div class="col-12">
+                <div class="card container-fluid overflow-hidden" style="border-radius: 8px;">
+                    <div class="card-body p-2">
+                        <label>Số tiền cược / 1 đơn vị</label>
+                        <input type="text" class="form-control mb-2" id="txtPricePerChoose" placeholder="Nhập số tiền cược" />
+                        <label>Tổng tiền thanh toán</label>
+                        <input type="text" class="form-control mb-2" id="txtPriceAllOrder" readonly="readonly" />
+                        <button type="button" class="btn btn-success w-100" id="btnSubmitPlayGame">ĐẶT DỰ ĐOÁN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="result mt-3" style="">
             <div class="title">
@@ -94,3 +112,40 @@
 </div>
 
 <!-- MAIN END -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var label1 = document.querySelector("label[for='checkMax']");
+        var bottomElement1 = document.querySelector(".btn_max");
+        label1.addEventListener("click", function (e) {
+            e.stopPropagation();
+            bottomElement1.classList.toggle("bg-success");
+            return;
+        });
+
+        var label2 = document.querySelector("label[for='checkSingle']");
+        var bottomElement2 = document.querySelector(".btn_single");
+        label2.addEventListener("click", function (e) {
+            e.stopPropagation();
+            bottomElement2.classList.toggle("bg-success");
+            return;
+        });
+
+        var label3 = document.querySelector("label[for='checkDouble']");
+        var bottomElement3 = document.querySelector(".btn_doucble");
+        label3.addEventListener("click", function (e) {
+            e.stopPropagation();
+            bottomElement3.classList.toggle("bg-success");
+            return;
+        });
+
+        var label4 = document.querySelector("label[for='checkMin']");
+        var bottomElement4 = document.querySelector(".btn_min");
+        label4.addEventListener("click", function (e) {
+            e.stopPropagation();
+            bottomElement4.classList.toggle("bg-success");
+            return;
+        });
+
+
+    });
+</script>

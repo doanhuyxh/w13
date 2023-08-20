@@ -93,7 +93,7 @@ namespace PTEcommerce.Web.Controllers
         [Throttle]
         public JsonResult PlayGames(PlayGamePost data)
         {
-            var priceMin = string.IsNullOrEmpty(settings.GetValueByKey("pricemin").Value) ? 0 : decimal.Parse(settings.GetValueByKey("pricemin").Value);
+            var priceMin = 1;// string.IsNullOrEmpty(settings.GetValueByKey("pricemin").Value) ? 0 : decimal.Parse(settings.GetValueByKey("pricemin").Value);
             if (string.IsNullOrEmpty(data.value))
             {
                 return Json(new
