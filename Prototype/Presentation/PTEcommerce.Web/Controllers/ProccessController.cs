@@ -136,22 +136,22 @@ namespace PTEcommerce.Web.Controllers
                     msg = "Phiên dự đoán không tồn tại"
                 }, JsonRequestBehavior.AllowGet);
             }
-            //if (sessionData.CreatedDate.AddSeconds(90) <= DateTime.Now)
-            //{
-            //    return Json(new
-            //    {
-            //        status = false,
-            //        msg = "Phiên dự đoán đã kết thúc"
-            //    }, JsonRequestBehavior.AllowGet);
-            //}
-            //if (sessionData.CreatedDate.AddSeconds(85) <= DateTime.Now)
-            //{
-            //    return Json(new
-            //    {
-            //        status = false,
-            //        msg = "Phiên ngừng nhận dự đoán"
-            //    }, JsonRequestBehavior.AllowGet);
-            //}
+            if (sessionData.CreatedDate.AddSeconds(90) <= DateTime.Now)
+            {
+                return Json(new
+                {
+                    status = false,
+                    msg = "Phiên dự đoán đã kết thúc"
+                }, JsonRequestBehavior.AllowGet);
+            }
+            if (sessionData.CreatedDate.AddSeconds(85) <= DateTime.Now)
+            {
+                return Json(new
+                {
+                    status = false,
+                    msg = "Phiên ngừng nhận dự đoán"
+                }, JsonRequestBehavior.AllowGet);
+            }
             var dataAccount = accountCustomer.GetById(memberSession.AccID);
             if(dataAccount == null)
             {

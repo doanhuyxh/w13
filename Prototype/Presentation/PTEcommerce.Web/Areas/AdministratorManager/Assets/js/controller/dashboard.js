@@ -93,7 +93,7 @@
             type: 'POST',
             data: {
                 result1: parseInt($('#sltResult1').val()),
-                result2: parseInt($('#sltResult2').val()),
+                result2: parseInt($('#sltsltResult2').val()),
                 sessionId: parseInt($('#sessionIdText').val())
             },
             success: function (res) {
