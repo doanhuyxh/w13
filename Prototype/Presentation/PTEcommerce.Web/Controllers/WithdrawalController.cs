@@ -37,7 +37,7 @@ namespace PTEcommerce.Web.Controllers
         }
         public ActionResult History()
         {
-            var data = withdrawal.ListAllPagingByCustomer(memberSession.AccID, 1, 10);
+            var data = withdrawal.ListAllPagingByCustomer(memberSession.AccID, 0, 10);
             return View(data);
         }
         public ActionResult HistoryTransaction(int offset, int limit = 10)

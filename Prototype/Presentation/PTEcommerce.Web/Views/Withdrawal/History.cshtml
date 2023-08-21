@@ -9,7 +9,9 @@
 
 
 <div class="container-fluid">
-
+    <div class="text-center mb-3">
+        <p class="text-white">Lịch sử rút tiền</p>
+    </div>
     @if (Model != null && Model.Count > 0)
     {
         foreach (var item in Model)
@@ -29,19 +31,19 @@
 
             <div class="item-order">
                 <div class="detail-item">
-                    <b>Mã đơn:</b>
+                    <b>Mã đơn: </b>
                     <p>@item.Id</p>
                 </div>
                 <div class="detail-item">
-                    <b>Thời gian:</b>
+                    <b>Thời gian: </b>
                     <p>@item.CreatedDate.ToString("dd/MM HH:mm:ss")</p>
                 </div>
                 <div class="detail-item">
-                    <b>Thành tiền:</b>
+                    <b>Thành tiền: </b>
                     <p>@PTEcommerce.Business.Helper.MoneyFormat(item.Amount)</p>
                 </div>
                 <div class="detail-item">
-                    <b>Trạng thái:</b>
+                    <b>Trạng thái: </b>
                     @if (item.Status == 1)
                     {
                         <p class="status-payment-pending">Đang xử lý</p>
