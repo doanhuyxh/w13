@@ -64,7 +64,7 @@ namespace PTEcommerce.Web
             );
             routes.MapRoute(
                 name: "PlayGame",
-                url: "choi-game",
+                url: "nhiem-vu",
                 defaults: new { controller = "Proccess", action = "Index" },
                 namespaces: new string[] { "PTEcommerce.Web.Controllers" }
             );

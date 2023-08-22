@@ -113,7 +113,10 @@ namespace PTEcommerce.Business
                 value = new List<string>(),
                 valuestring = string.Empty
             };
-            if (value.Contains(","))
+
+            
+
+            if (value.Contains(",") != null)
             {
                 string[] arrValue = value.Split(',');
                 var valueString = new List<string>();
