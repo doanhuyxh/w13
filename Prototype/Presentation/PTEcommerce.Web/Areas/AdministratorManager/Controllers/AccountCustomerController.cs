@@ -66,7 +66,7 @@ namespace PTEcommerce.Web.Areas.AdministratorManager.Controllers
                 AmountBefore = priceBefore,
                 AmountModified = amount
             };
-            if(type == 1)
+            if (type == 1)
             {
                 dataAccount.AmountAvaiable = priceBefore + amount;
                 modelInsertHistory.AmountAfter = priceBefore + amount;
@@ -96,7 +96,7 @@ namespace PTEcommerce.Web.Areas.AdministratorManager.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
             var dataAccount = accountCustomer.GetById(idAccount);
-            if(dataAccount == null)
+            if (dataAccount == null)
             {
                 return Json(new
                 {
@@ -128,7 +128,7 @@ namespace PTEcommerce.Web.Areas.AdministratorManager.Controllers
 
         public JsonResult UpdatePasswordAdmin(string password, string repassword)
         {
-            if(string.IsNullOrEmpty(password) || string.IsNullOrEmpty(repassword))
+            if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(repassword))
             {
                 return Json(new
                 {
@@ -147,7 +147,7 @@ namespace PTEcommerce.Web.Areas.AdministratorManager.Controllers
             var passwordHash = Helper.sha256_hash(password.Trim() + ConstKey.keySHA);
             var mems = SessionAdmin.GetUser();
             var dataAccount = accountAdmin.GetById(mems.Id);
-            if(dataAccount == null)
+            if (dataAccount == null)
             {
                 return Json(new
                 {
@@ -189,6 +189,25 @@ namespace PTEcommerce.Web.Areas.AdministratorManager.Controllers
                 status = true,
                 data = data1,
             }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult UpdateStatus(int id, int status)
+        {
+            var rs = accountCustomer.UpdateAccountIsActive(id, status);
+            if (rs)
+            {
+                return Json(new
+                {
+                    status = true
+                }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Slapper.AutoMapper;
 
 namespace marketplace
 {
@@ -23,7 +24,7 @@ namespace marketplace
             }
             catch (Exception ex)
             {
-                Logging.PutError(ex.Message, ex);
+                Framework.Helper.Logging.Logging.PutError(ex.Message, ex);
                 return null;
             }
         }
@@ -38,7 +39,7 @@ namespace marketplace
             }
             catch (Exception ex)
             {
-                Logging.PutError(ex.Message, ex);
+                Framework.Helper.Logging.Logging.PutError(ex.Message, ex);
                 return null;
             }
         }
@@ -53,7 +54,7 @@ namespace marketplace
             }
             catch (Exception ex)
             {
-                Logging.PutError(ex.Message, ex);
+                Framework.Helper.Logging.Logging.PutError(ex.Message, ex);
                 return null;
             }
         }
@@ -70,7 +71,7 @@ namespace marketplace
             }
             catch (Exception ex)
             {
-                Logging.PutError(ex.Message,ex);
+                Framework.Helper.Logging.Logging.PutError(ex.Message, ex);
                 return null;
             }
         }
@@ -86,7 +87,7 @@ namespace marketplace
             }
             catch (Exception ex)
             {
-                Logging.PutError(ex.Message, ex);
+                Framework.Helper.Logging.Logging.PutError(ex.Message, ex);
                 return false;
             }
         }
@@ -103,11 +104,25 @@ namespace marketplace
             }
             catch (Exception ex)
             {
-                Logging.PutError(ex.Message, ex);
+                Framework.Helper.Logging.Logging.PutError(ex.Message, ex);
                 return null;
             }
-
-
+        }
+        public bool UpdateAccountIsActive(int userid, int status)
+        {
+            try
+            {
+                var p = new DynamicParameters();
+                p.Add("@NewIsActive", status);
+                p.Add("@AccountId", userid);
+                var flag = unitOfWork.ProcedureExecute("UpdateAccountIsActive", p);
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                Framework.Helper.Logging.Logging.PutError(ex.Message, ex);
+                return false;
+            }
         }
     }
 }

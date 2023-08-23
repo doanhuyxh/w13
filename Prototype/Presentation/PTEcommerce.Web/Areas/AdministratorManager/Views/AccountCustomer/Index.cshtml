@@ -150,7 +150,7 @@
                 } else {
                     data = data.data;
                     console.log(data)
-                    $('#userd').html(data.Id);
+                    $('#userd').val(data.Id);
                     $('#fullname').html(data.FullName);
                     $('#gender').html(data.Gender);
                     $('#bankName').html(data.BankName);
@@ -171,7 +171,27 @@
     };
 
     function UpdateStatusUser() {
-        base.toastrAlert("thành công", 'success');
-        base.toastrAlert("adada", 'error');
+        let check;
+        if ($('#statusUser').val() == 1) {
+            check = 1;
+        } else {
+            check = 0
+        }
+
+        fetch(`/AdministratorManager/AccountCustomer/UpdateStatus?id=${$('#userd').val()}&status=${check}`)
+            .then(res => res.json())
+            .then(d => {
+                if (d.status) {
+                    base.toastrAlert("Chuyển trạng thái người dùng thành công", 'success');
+                    $('#myModalDetailUser').modal('hide');
+                    $('#tblAccount').bootstrapTable('refresh', { silent: true });
+                } else {
+                    base.toastrAlert("Chuyển trạng thái người dùng bị lôi", 'error');
+                    $('#myModalDetailUser').modal('hide');
+                    $('#tblAccount').bootstrapTable('refresh', { silent: true });
+                }
+
+            })
+
     }
 </script>
