@@ -41,8 +41,18 @@
             minimumCountColumns: 2,
             columns: [
                 {
+
                     field: 'Id',
-                    title: '',
+                    title: 'Xem',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: function (value, row, index) {
+                        return `<button onclick="ViewAcc(${value})" type="button" class="p-1 btn btn-light"><i class="fa-solid fa-eye" style="color: #246ef0;"></i></button>`
+                    }
+                },
+                {
+                    field: 'Id',
+                    title: 'Hành động',
                     align: 'center',
                     valign: 'middle',
                     formatter: function (value, row, index) {
@@ -72,6 +82,21 @@
                     title: 'Email',
                     align: 'center',
                     valign: 'middle'
+                },
+                {
+                    field: 'IsActive',
+                    title: 'Trạng thái',
+                    align: 'center',
+                    valign: 'middle',
+                    formatter: function (value, index, row) {
+                        console.log();
+                        if (value) {
+                            return `<button type="button" class="btn btn-success" style="cursor: auto !important;">Hoạt động</button>`
+                        }
+                        else {
+                            return ` <button type="button" class="btn btn-danger" style="cursor: auto !important;">Ngừng hoạt động</button>`
+                        }
+                    }
                 },
                 {
                     field: 'CreatedDate',

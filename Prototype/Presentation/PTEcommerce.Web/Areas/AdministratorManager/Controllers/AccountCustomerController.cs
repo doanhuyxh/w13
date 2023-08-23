@@ -172,5 +172,23 @@ namespace PTEcommerce.Web.Areas.AdministratorManager.Controllers
                 message = "Đổi mật khẩu không thành công"
             }, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult ViewAccCustomer(int id)
+        {
+            var data1 = accountCustomer.ViewAccountCustom(id);
+            if (data1 == null)
+            {
+                return Json(new
+                {
+                    status = false,
+                    data = "",
+                }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new
+            {
+                status = true,
+                data = data1,
+            }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

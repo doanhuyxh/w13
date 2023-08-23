@@ -10,7 +10,7 @@
         foreach (var item in Model)
         {
 
-            <div class="item-order">
+            <div class="item-order  overflow-hidden">
                 <div class="detail-item">
                     <b>Đơn hàng: </b>
                     <p>@item.Id</p>
@@ -20,8 +20,8 @@
                     <p>@item.CreatedDate.ToString("dd/MM HH:mm:ss")</p>
                 </div>
                 <div class="detail-item">
-                    <b>Dự đoán: </b>
-                    <p><span class="float-end">@item.Note</span></p>
+                    <b class="text-nowrap">Dự đoán: </b>
+                    <p><span class="float-end text-nowrap">@item.Note</span></p>
                 </div>
                 <div class="detail-item">
                     <b>Phần thưởng: </b>

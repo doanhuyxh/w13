@@ -88,6 +88,7 @@
                 if (res.status) {
                     $('#resultSession1').html(res.value1);
                     $('#resultSession2').html(res.value2);
+                    $('#resultSesionName').html(res.sesion);
                 }
             }
         });

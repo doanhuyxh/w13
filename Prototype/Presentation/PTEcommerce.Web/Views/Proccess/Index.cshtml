@@ -3,11 +3,85 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container-fluid">
-    <div class="main" style="padding-top: 0 !important; width:100%; overflow:hidden">
-        <div class="item-game">
+<style>
+    .main {
+        background-color: #ffff !important;
+        background: #ffff !important;
+    }
+
+    .container-fluid {
+        background-color: #ffff !important;
+    }
+
+    .navbar {
+        background-color: #808080 !important;
+    }
+
+    .font-weight-bolid {
+        font-weight: bold;
+    }
+
+    .input_1 {
+        outline-color: red;
+        padding: 8px;
+        border: 2px solid red;
+        border-radius: 8px;
+        margin: auto;
+    }
+
+    .input_2 {
+        outline-color: none;
+        padding: 2px;
+        outline: none;
+        border: none;
+        display: inline-block;
+        width: 9em;
+        color: red;
+    }
+
+    .tex-brown {
+        color: brown;
+    }
+
+    .sen {
+        background-color: red;
+        color: white;
+        cursor: pointer;
+        opacity: 0.9;
+    }
+
+        .sen:hover {
+            background-color: red;
+            color: white;
+            opacity: 1;
+        }
+
+    .w-auto-100 {
+        height: 30px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 10%;
+        transform: translateY(-50%);
+    }
+
+    .radius_title {
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        color: orangered;
+    }
+
+    .mf {
+        margin-left: 4px;
+    }
+</style>
+<div class="container">
+
+    @*<div class="item-game">
             <div class="left col-8">
-                <b>Kết quả gần nhất</b>
+                <b>Đơn kết hợp</b>
             </div>
             <div class="right col-4">
                 <p id="resultSession1"></p>
@@ -25,82 +99,115 @@
                 <div class="line"></div>
                 <p id="timeCountDown"></p>
             </div>
-        </div>
+        </div>*@
 
-        <div class="list-mini-game">
-            <div class="item-mini">
-                <div class="top">
-                    <label for="checkMax">
-                        <img src="/Assets/publics/images/youtobe.png" id="img_Max" alt="" width="100%">
-                        <input type="checkbox" name="checkMax" id="checkMax" hidden />
-                    </label>
+    <div class="row container-fluid border-radius-4 py-3" style="background-color: orangered !important">
+        <div class="col-3"><img src="~/Assets/publics/images/shopee.png" style="width:100px;height:auto; border-radius: 42%; transform:rotate(30deg)" /></div>
+        <div class="col-9 row">
+            <div style="margin-left:1em;">
+                <div class="col-12">
+                    <p class="text-center bg-white py-1 radius_title">Kết quả đơn kết hợp</p>
                 </div>
-                <div class="bottom btn_max">
-                    <b>Lớn</b>
-                </div>
-            </div>
-            <div class="item-mini">
-                <div>
-                    <label for="checkMin">
-                        <img src="/Assets/publics/images/insta.png" id="img_Min" alt="" width="100%">
-                        <input id="checkMin" name="checkMin" type="checkbox" hidden />
-                    </label>
-                </div>
-                <div class="bottom btn_min">
-                    <b>NHỎ</b>
-                </div>
-            </div>
-            <div class="item-mini">
-                <div class="top">
-                    <label for="checkDouble">
-                        <img src="/Assets/publics/images/tiktok.png" id="img_D" alt="" width="100%">
-                        <input id="checkDouble" name="checkDouble" type="checkbox" hidden />
-                    </label>
-                </div>
-                <div class="bottom btn_doucble">
-                    <b class="active">Đôi</b>
-                </div>
-            </div>
-            <div class="item-mini">
-                <div class="top">
-                    <label for="checkSingle">
-                        <img src="/Assets/publics/images/zing.png" id="img_S" alt="" width="100%">
-                        <input id="checkSingle" name="checkSingle" type="checkbox" hidden />
-                    </label>
-                </div>
-                <div class="bottom btn_single">
-                    <b>Đơn</b>
-                </div>
-            </div>
-        </div>
-        <input type="text" id="valueTimeCountDown" hidden />
-        <input type="text" id="sessionCurrent" hidden />
-
-        <div class="row mt-3 mb-3">
-            <div class="col-12">
-                <div class="card container-fluid overflow-hidden" style="border-radius: 8px;">
-                    <div class="card-body p-2">
-                        <label>Số tiền cược / 1 đơn vị</label>
-                        <input type="text" class="form-control mb-2" id="txtPricePerChoose" placeholder="Nhập số tiền cược" />
-                        <label>Tổng tiền thanh toán</label>
-                        <input type="text" class="form-control mb-2" id="txtPriceAllOrder" readonly="readonly" />
-                        <button type="button" class="btn btn-success w-100" id="btnSubmitPlayGame">ĐẶT DỰ ĐOÁN</button>
+                <div class="col-12 my-2 d-flex justify-content-between">
+                    <div class="text-warning"><span class="mf">Kỳ:</span><span id="sessionName" class="mf"></span><span class="mf">Đang mở ...</span></div>
+                    <div class="bg-black px-2 radius_title">
+                        <i class="fa-solid fa-clock-rotate-left" style="color:#ffff!important"></i> <span id="timeCountDown" class="text-white"></span>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="result mt-3" style="">
-            <div class="title">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card shadow-sm product mb-3">
-                            <div class="card-body p-0">
-                                <h4 class="text-dark pt-2 ps-2">Lịch sử chơi</h4>
-                                <div class=" h-400 overflow-scroll">
-                                    <ul class="list-group list-group-flush bg-none px-2" id="listHistoryPlayGames">
-                                    </ul>
-                                </div>
+    <div class="mb-3 mt-2 d-flex justify-content-between">
+        <div>
+            <span class="text-danger fs-4">Kỳ trước:</span><span class="text-danger fs-4 mf" id="resultSesionName"></span>
+        </div>
+        <div style="margin-right: 12px; color:rebeccapurple">
+            <span id="resultSession1"></span>
+            <span id="resultSession2"></span>
+        </div>
+    </div>
+
+    <div class="mb-3 mt-2">
+        <span class="text-danger fs-4">Chọn kênh:</span>
+    </div>
+
+    <div class="list-mini-game">
+        <div class="item-mini">
+            <div class="top">
+                <label for="checkMax">
+                    <img src="/Assets/publics/images/shopee.png" id="img_Max" alt="" width="100%">
+                    <input type="checkbox" name="checkMax" id="checkMax" hidden />
+                </label>
+            </div>
+            <div class="bottom btn btn-outline-danger btn_max text-center" style="width:100%">
+                <b>Lớn</b>
+            </div>
+        </div>
+        <div class="item-mini">
+            <div>
+                <label for="checkMin">
+                    <img src="/Assets/publics/images/lazada.png" id="img_Min" alt="" width="100%">
+                    <input id="checkMin" name="checkMin" type="checkbox" hidden />
+                </label>
+            </div>
+            <div class="bottom btn_min btn btn-danger text-center" style="width:100%">
+                <b>NHỎ</b>
+            </div>
+        </div>
+        <div class="item-mini">
+            <div class="top">
+                <label for="checkDouble">
+                    <img src="/Assets/publics/images/titok.png" id="img_D" alt="" width="100%">
+                    <input id="checkDouble" name="checkDouble" type="checkbox" hidden />
+                </label>
+            </div>
+            <div class="bottom btn_doucble btn btn-danger text-center" style="width:100%">
+                <b class="active">Đôi</b>
+            </div>
+        </div>
+        <div class="item-mini">
+            <div class="top">
+                <label for="checkSingle">
+                    <img src="/Assets/publics/images/insta2.png" id="img_S" alt="" width="100%">
+                    <input id="checkSingle" name="checkSingle" type="checkbox" hidden />
+                </label>
+            </div>
+            <div class="bottom btn_single btn btn-outline-danger text-center" style="width:100%">
+                <b>Đơn</b>
+            </div>
+        </div>
+    </div>
+    <input type="text" id="valueTimeCountDown" hidden />
+    <input type="text" id="sessionCurrent" hidden />
+
+    <div class="row mt-3 mb-3 container-fluid">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-3 d-flex justify-content-start"><p class="font-weight-bolid p-2 fs-5 border-radius-5 tex-brown text-wrap bg-warning w-100">Số tiền đặt hàng</p></div>
+                <div class="col-7 d-flex justify-content-center"><input type="number" class="input_1" id="txtPricePerChoose" placeholder="Nhập số tiền cược" /></div>
+                <div class="col-2 d-flex justify-content-end align-content-center"><span class="font-weight-bolid p-2 fs-5 border-radius-5 tex-brown text-wrap bg-warning" style="height:45px; margin:auto">VND</span></div>
+            </div>
+        </div>
+        <div class="col-12 mt-2">
+            <div class="row">
+                <div class="col-3 d-flex justify-content-start"><p class="font-weight-bolid p-2 fs-5 border-radius-5 tex-brown text-wrap bg-warning w-100">Thêm giỏ hàng</p></div>
+                <div class="col-6 position-relative"><div class="w-auto-100"><p class="d-inline-block text-primary text-nowrap">Tổng số:</p><input type="text" class="input_2 mf" id="txtPriceAllOrder" readonly /></div></div>
+                <div class="col-3 d-flex justify-content-end"><button type="button" id="btnSubmitPlayGame" class="p-2 fs-5 border-radius-5 text-wrap sen">Xác nhận đơn hàng</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="result mt-3" style="">
+        <div class="title">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-sm product mb-3">
+                        <div class="card-body p-0">
+                            <h4 class="text-dark pt-2 ps-2">Lịch sử chơi</h4>
+                            <div class=" h-400 overflow-scroll">
+                                <ul class="list-group list-group-flush bg-none px-2" id="listHistoryPlayGames">
+                                </ul>
                             </div>
                         </div>
                     </div>

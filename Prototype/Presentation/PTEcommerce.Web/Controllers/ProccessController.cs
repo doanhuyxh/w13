@@ -72,6 +72,7 @@ namespace PTEcommerce.Web.Controllers
                 return Json(new
                 {
                     status = true,
+                    sesion = sesionGamesData.Id,
                     value1 = Business.Helper.ConvertValue(sesionGamesData.Value.ToString()).valuestring,
                     value2 = Business.Helper.ConvertValue(sesionGamesData.Value2.ToString()).valuestring,
                 }, JsonRequestBehavior.AllowGet);
@@ -79,6 +80,7 @@ namespace PTEcommerce.Web.Controllers
             return Json(new
             {
                 status = true,
+                sesion = 0,
                 value1 = "...",
                 value2 = "...",
             }, JsonRequestBehavior.AllowGet);

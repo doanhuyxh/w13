@@ -13,5 +13,6 @@ namespace marketplace
         AccountCustomer ViewDetailByEmail(string email);
         AccountCustomer ViewDetailByUsername(string username);
         bool UpdateToken(int id, string token);
+        AccountDetail ViewAccountCustom(int id);
     }
 }

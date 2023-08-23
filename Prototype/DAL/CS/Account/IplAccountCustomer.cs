@@ -1,5 +1,6 @@
 ﻿using Framework;
 using Framework.Helper.Logging;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,6 +89,25 @@ namespace marketplace
                 Logging.PutError(ex.Message, ex);
                 return false;
             }
+        }
+
+        public AccountDetail ViewAccountCustom(int id)
+        {
+            try
+            {
+                var acc = new AccountDetail();
+                var p = new DynamicParameters();
+                p.Add("@Id", id);
+                acc = unitOfWork.Procedure<AccountDetail>("GetAccountCustomerById", p).FirstOrDefault();
+                return acc;
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
+                return null;
+            }
+
+
         }
     }
 }
