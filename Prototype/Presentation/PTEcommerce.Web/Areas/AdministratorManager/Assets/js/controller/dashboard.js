@@ -109,7 +109,8 @@
     countDownTime: function () {
         let timer = parseInt($('#valueTimeCountDown').val());
         if (timer < 0) {
-            return;
+            window.location.reload();
+           
         }
         let minutes = parseInt(timer / 60, 10);
         let seconds = parseInt(timer % 60, 10);
@@ -119,6 +120,8 @@
 
         $('#timeCountDown').html(minutes + ":" + seconds);
         $('#valueTimeCountDown').val(timer - 1);
+
+        $('#tblHistoryPlaySession').bootstrapTable('refresh', { silent: true });
     },
     startChatHub: function () {
         var chat = $.connection.chatHub;
@@ -141,4 +144,4 @@
 };
 $(document).ready(function () {
     dashboard.registerControl();
-});
+});;

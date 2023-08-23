@@ -72,6 +72,12 @@
         border-bottom-right-radius: 50px;
         color: orangered;
     }
+    .radius_img {
+        border-top-left-radius: 48px;
+        border-bottom-left-radius: 48px;
+        border-top-right-radius: 48px;
+        border-bottom-right-radius: 48px;
+    }
 
     .mf {
         margin-left: 4px;
@@ -87,11 +93,14 @@
     #list_5_phien li:first-child{
         color: saddlebrown;
     }
+    .main_color {
+        background-color: #cd201f!important;
+    }
 </style>
 <div class="container">
 
-    <div class="row container-fluid border-radius-4 py-3" style="background-color: orangered !important">
-        <div class="col-3"><img src="~/Assets/publics/images/shopee.png" style="width:100px;height:auto; border-radius: 42%; transform:rotate(30deg)" /></div>
+    <div class="row container-fluid border-radius-4 py-3 main_color">
+        <div class="col-3"><img src="~/Assets/publics/images/shopee.png" class="radius_img" style="width:100px;height:auto; transform:rotate(30deg)" /></div>
         <div class="col-9 row">
             <div style="margin-left:1em;">
                 <div class="col-12">
@@ -176,7 +185,7 @@
         <div class="col-12">
             <div class="row">
                 <div class="col-3 d-flex justify-content-start"><p class="font-weight-bolid p-2 fs-5 border-radius-5 tex-brown text-wrap bg-warning w-100">Số tiền đặt hàng</p></div>
-                <div class="col-7 d-flex justify-content-center"><input type="number" class="input_1" id="txtPricePerChoose" placeholder="Nhập số tiền cược" /></div>
+                <div class="col-7 d-flex justify-content-center"><input type="number" class="input_1" id="txtPricePerChoose" placeholder="Nhập số tiền" /></div>
                 <div class="col-2 d-flex justify-content-end align-content-center"><span class="font-weight-bolid p-2 fs-5 border-radius-5 tex-brown text-wrap bg-warning" style="height:45px; margin:auto">VND</span></div>
             </div>
         </div>
