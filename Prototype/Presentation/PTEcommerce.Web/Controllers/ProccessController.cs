@@ -105,7 +105,7 @@ namespace PTEcommerce.Web.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
             var checkData = Helper.ConvertValue(data.value);
-            if(checkData == null || checkData.value.Count == 0)
+            if (checkData == null || checkData.value.Count == 0)
             {
                 return Json(new
                 {
@@ -113,7 +113,7 @@ namespace PTEcommerce.Web.Controllers
                     msg = "Vui lòng chọn dự đoán"
                 }, JsonRequestBehavior.AllowGet);
             }
-            if(data.sessionId <= 0)
+            if (data.sessionId <= 0)
             {
                 return Json(new
                 {
@@ -121,7 +121,7 @@ namespace PTEcommerce.Web.Controllers
                     msg = "Vui lòng chọn phiên dự đoán"
                 }, JsonRequestBehavior.AllowGet);
             }
-            if(priceMin > 0 && (data.price * checkData.value.Count) < priceMin)
+            if (priceMin > 0 && (data.price * checkData.value.Count) < priceMin)
             {
                 return Json(new
                 {
@@ -130,7 +130,7 @@ namespace PTEcommerce.Web.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
             var sessionData = sessionGames.GetById(data.sessionId);
-            if(sessionData == null)
+            if (sessionData == null)
             {
                 return Json(new
                 {
@@ -155,7 +155,7 @@ namespace PTEcommerce.Web.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
             var dataAccount = accountCustomer.GetById(memberSession.AccID);
-            if(dataAccount == null)
+            if (dataAccount == null)
             {
                 return Json(new
                 {
@@ -164,7 +164,7 @@ namespace PTEcommerce.Web.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
             var amountBefore = dataAccount.AmountAvaiable;
-            if(amountBefore < (data.price * checkData.value.Count))
+            if (amountBefore < (data.price * checkData.value.Count))
             {
                 return Json(new
                 {
@@ -179,7 +179,7 @@ namespace PTEcommerce.Web.Controllers
                 var client = new RestClient(url + "/AdministratorManager/PushSignalR/UpdatePlayGame");
                 var request = new RestRequest(Method.GET);
                 IRestResponse response = client.Execute(request);
-                if(response != null && response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response != null && response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     Logging.PushString("Call signalR success");
                 }
@@ -221,6 +221,35 @@ namespace PTEcommerce.Web.Controllers
             {
                 status = false,
                 msg = "Dự đoán không thành công"
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetYet5Session()
+        {
+            var sesionGamesData = sessionGames.Get5YetSession();
+            if (sesionGamesData != null)
+            {
+                List<object> results = new List<object>();
+
+                foreach (var gameData in sesionGamesData)
+                {
+                    results.Add(new
+                    {
+                        status = true,
+                        sesion = gameData.Id,
+                        value1 = Business.Helper.ConvertValue(gameData.Value.ToString()).valuestring,
+                        value2 = Business.Helper.ConvertValue(gameData.Value2.ToString()).valuestring,
+                    });
+                }
+
+                return Json(results, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new
+            {
+                status = true,
+                sesion = 0,
+                value1 = "...",
+                value2 = "...",
             }, JsonRequestBehavior.AllowGet);
         }
     }

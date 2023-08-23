@@ -41,7 +41,7 @@ namespace marketplace
             }
             catch (Exception ex)
             {
-                Logging.PutError(ex.Message,ex);
+                Logging.PutError(ex.Message, ex);
                 return null;
             }
         }
@@ -54,7 +54,21 @@ namespace marketplace
             }
             catch (Exception ex)
             {
-                Logging.PutError(ex.Message,ex);
+                Logging.PutError(ex.Message, ex);
+                return null;
+            }
+        }
+
+        public List<SessionGames> Get5YetSession()
+        {
+            try
+            {
+                var data = unitOfWork.Procedure<SessionGames>("SessionGames_GetSession5Current").Take(5).ToList();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                Logging.PutError(ex.Message, ex);
                 return null;
             }
         }

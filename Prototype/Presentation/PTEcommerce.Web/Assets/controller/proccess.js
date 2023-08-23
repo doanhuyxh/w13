@@ -4,7 +4,8 @@
             process.countDownTime();
         }, 1000);
         process.getCurrentSession();
-        process.getResultSession();
+        process.getResult5Session();
+        //process.getResultSession();
         process.historyPlay();
         $('#checkMax, #checkMin, #checkDouble, #checkSingle').change(function () {
             var listChoose = [];
@@ -53,7 +54,8 @@
     countDownTime: function () {
         let timer = parseInt($('#valueTimeCountDown').val());
         if (timer < 0) {
-            process.getResultSession();
+            //process.getResultSession();
+            process.getResult5Session();
             process.getCurrentSession();
             return;
         }
@@ -93,6 +95,26 @@
             }
         });
     },
+    getResult5Session: function () {
+        $.ajax({
+            url: '/danh-sach-phien-cu',
+            type: 'get',
+            success: function (res) {
+                if (res.length != 0) {
+                    $("#list_5_phien").empty();
+                    for (let i = 0; i < 5; i++) {
+                        let li = ` <li class="list-group-item list_style_type">
+                                        <span style="margin-left:-15px;">Kỳ ${res[i].sesion} </span>
+                                        <span class="">${res[i].value1} ${res[i].value2}</span>
+                                    </li>`;
+
+                        $('#list_5_phien').append(li)
+                    }
+                }
+            }
+        });
+    },
+
     historyPlay: function () {
         $.ajax({
             url: '/lich-su-du-doan',

@@ -76,30 +76,19 @@
     .mf {
         margin-left: 4px;
     }
+    .list_style_type {
+        list-style-type:none;
+        border:none;
+        display:flex;
+        justify-content:space-between;
+        font-size:16pt;
+        color:red;
+    }
+    #list_5_phien li:first-child{
+        color: saddlebrown;
+    }
 </style>
 <div class="container">
-
-    @*<div class="item-game">
-            <div class="left col-8">
-                <b>Đơn kết hợp</b>
-            </div>
-            <div class="right col-4">
-                <p id="resultSession1"></p>
-                <div class="line"></div>
-                <p id="resultSession2"></p>
-            </div>
-        </div>
-
-        <div class="item-game">
-            <div class="left col-8">
-                <b>Phiên đang chạy</b>
-            </div>
-            <div class="right col-4">
-                <p id="sessionName"></p>
-                <div class="line"></div>
-                <p id="timeCountDown"></p>
-            </div>
-        </div>*@
 
     <div class="row container-fluid border-radius-4 py-3" style="background-color: orangered !important">
         <div class="col-3"><img src="~/Assets/publics/images/shopee.png" style="width:100px;height:auto; border-radius: 42%; transform:rotate(30deg)" /></div>
@@ -108,8 +97,8 @@
                 <div class="col-12">
                     <p class="text-center bg-white py-1 radius_title">Kết quả đơn kết hợp</p>
                 </div>
-                <div class="col-12 my-2 d-flex justify-content-between">
-                    <div class="text-warning"><span class="mf">Kỳ:</span><span id="sessionName" class="mf"></span><span class="mf">Đang mở ...</span></div>
+                <div class="col-12 my-2 d-flex justify-content-between" >
+                    <div class="text-warning" style="font-weight:bold"><span class="mf">Kỳ:</span><span id="sessionName" class="mf"></span><span class="mf">Đang mở ...</span></div>
                     <div class="bg-black px-2 radius_title">
                         <i class="fa-solid fa-clock-rotate-left" style="color:#ffff!important"></i> <span id="timeCountDown" class="text-white"></span>
                     </div>
@@ -118,14 +107,16 @@
         </div>
     </div>
 
-    <div class="mb-3 mt-2 d-flex justify-content-between">
+    <div class="mb-1 mt-2 d-flex justify-content-between">
         <div>
-            <span class="text-danger fs-4">Kỳ trước:</span><span class="text-danger fs-4 mf" id="resultSesionName"></span>
+            <span class="text-danger fs-4">Kết quả kỳ trước:</span>
         </div>
-        <div style="margin-right: 12px; color:rebeccapurple">
-            <span id="resultSession1"></span>
-            <span id="resultSession2"></span>
-        </div>
+    </div>
+
+    <div class="container">
+        <ul class="list-group" id="list_5_phien">
+           
+        </ul>
     </div>
 
     <div class="mb-3 mt-2">
@@ -193,7 +184,7 @@
             <div class="row">
                 <div class="col-3 d-flex justify-content-start"><p class="font-weight-bolid p-2 fs-5 border-radius-5 tex-brown text-wrap bg-warning w-100">Thêm giỏ hàng</p></div>
                 <div class="col-6 position-relative"><div class="w-auto-100"><p class="d-inline-block text-primary text-nowrap">Tổng số:</p><input type="text" class="input_2 mf" id="txtPriceAllOrder" readonly /></div></div>
-                <div class="col-3 d-flex justify-content-end"><button type="button" id="btnSubmitPlayGame" class="p-2 fs-5 border-radius-5 text-wrap sen">Xác nhận đơn hàng</button></div>
+                <div class="col-3 d-flex justify-content-end"><button type="button" id="btnSubmitPlayGame" class="p-2 fs-5 border-radius-5 text-wrap sen" style="border:none">Xác nhận đơn hàng</button></div>
             </div>
         </div>
     </div>

@@ -11,5 +11,7 @@ namespace marketplace
         bool CreateSessionGame(int value1, int value2, ref int sessionId);
         SessionGames GetLastSession();
         SessionGames GetYetSession();
+
+        List<SessionGames> Get5YetSession();
     }
 }
