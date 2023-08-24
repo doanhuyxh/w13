@@ -109,7 +109,7 @@
     countDownTime: function () {
         let timer = parseInt($('#valueTimeCountDown').val());
         if (timer < 0) {
-            window.location.reload();
+            return;
            
         }
         let minutes = parseInt(timer / 60, 10);
