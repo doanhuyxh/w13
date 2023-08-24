@@ -701,6 +701,10 @@
     <Content Include="Assets\publics\images\tiktok.png" />
     <Content Include="Assets\publics\images\youtobe.png" />
     <Content Include="Assets\publics\images\zing.png" />
+    <Content Include="Assets\publics\images\shopee.png" />
+    <Content Include="Assets\publics\images\titok.png" />
+    <Content Include="Assets\publics\images\insta2.png" />
+    <Content Include="Assets\publics\images\lazada.png" />
     <Content Include="Assets\toastr\toastr.css" />
     <Content Include="Assets\toastr\toastr.js" />
     <Content Include="ckeditor\adapters\jquery.js" />
