@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="item-button">
-                    <button type="button" onclick="updateInformation()" id="btnUpdateInformation">Xác nhận</button>
+                    <button type="button" onclick="updateInformation()" id="btnUpdateInformation">Sửa đổi</button>
                 </div>
             </form>
         </div>
@@ -90,6 +90,14 @@
                     $(".left-bar").removeClass("active");
                     $("body").removeClass("active");
                 });
+
+                let a = $("#inputFullName").val() == null;
+                let b = $("#inputFullName").val() == "";
+
+                if (a || b) {
+                    $("#btnUpdateInformation").html("Xác nhận")
+                }
+
             });
             // NAV LEFT END
 
@@ -112,6 +120,7 @@
                         $('#btnUpdateInformation').prop('disabled', false);
                         if (res.status) {
                             base.success(res.msg);
+                            $("#btnUpdateInformation").html("Sửa đổi")
                         }
                         else {
                             base.error(res.msg);
