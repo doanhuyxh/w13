@@ -114,13 +114,14 @@ namespace PTEcommerce.Business
                 valuestring = string.Empty
             };
 
-            
+
 
             if (value.Contains(",") != null)
             {
                 string[] arrValue = value.Split(',');
                 var valueString = new List<string>();
-                foreach(var item in arrValue) {
+                foreach (var item in arrValue)
+                {
                     switch (item)
                     {
                         case "1":
@@ -140,7 +141,8 @@ namespace PTEcommerce.Business
                 }
                 result.valuestring = string.Join(" ", valueString);
             }
-            else {
+            else
+            {
                 switch (value)
                 {
                     case "1":
@@ -160,7 +162,64 @@ namespace PTEcommerce.Business
             }
             return result;
         }
-        
+
+        public static ConvertValueResult ConvertValue2(string value)
+        {
+            ConvertValueResult result = new ConvertValueResult
+            {
+                value = new List<string>(),
+                valuestring = string.Empty
+            };
+
+
+
+            if (value.Contains(",") != null)
+            {
+                string[] arrValue = value.Split(',');
+                var valueString = new List<string>();
+                foreach (var item in arrValue)
+                {
+                    switch (item)
+                    {
+                        case "1":
+                            valueString.Add("LỚN(Số)");
+                            break;
+                        case "2":
+                            valueString.Add("NHỎ(Số)");
+                            break;
+                        case "3":
+                            valueString.Add("ĐÔI(Mảnh)");
+                            break;
+                        case "4":
+                            valueString.Add("ĐƠN(Mảnh)");
+                            break;
+                    }
+                    result.value.Add(item);
+                }
+                result.valuestring = string.Join(" ", valueString);
+            }
+            else
+            {
+                switch (value)
+                {
+                    case "1":
+                        result.valuestring = "LỚN(Số)";
+                        break;
+                    case "2":
+                        result.valuestring = "NHỎ(Số)";
+                        break;
+                    case "3":
+                        result.valuestring = "ĐÔI(Mảnh)";
+                        break;
+                    case "4":
+                        result.valuestring = "ĐƠN(Mảnh)";
+                        break;
+                }
+                result.value.Add(value);
+            }
+            return result;
+        }
+
         private static bool CheckCodeOrSeriAllNetwork(string card_code_or_seri)
         {
             if (!Regex.IsMatch(card_code_or_seri, "^[0-9]*$"))
@@ -228,5 +287,21 @@ namespace PTEcommerce.Business
                 return date.ToString("dd/MM/yyyy HH:mm:ss");
             }
         }
+        public static string GetSubstringAfterWord(string input, string targetWord)
+        {
+            string[] words = input.Split(' ');
+            int indexTarget = Array.IndexOf(words, targetWord);
+
+            if (indexTarget != -1 && indexTarget < words.Length - 1)
+            {
+                return words[indexTarget + 1];
+            }
+            else
+            {
+                return null; // Hoặc một giá trị mặc định khác tùy theo yêu cầu của bạn
+            }
+        }
+
+
     }
 }

@@ -237,8 +237,8 @@ namespace PTEcommerce.Web.Controllers
                     {
                         status = true,
                         sesion = gameData.Id,
-                        value1 = Business.Helper.ConvertValue(gameData.Value.ToString()).valuestring,
-                        value2 = Business.Helper.ConvertValue(gameData.Value2.ToString()).valuestring,
+                        value1 = Business.Helper.ConvertValue2(gameData.Value.ToString()).valuestring,
+                        value2 = Business.Helper.ConvertValue2(gameData.Value2.ToString()).valuestring,
                     });
                 }
 

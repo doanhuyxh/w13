@@ -3,38 +3,48 @@
 
     ViewBag.Title = "HistoryOrder";
 }
+<style>
+    .mr{
+        margin-right: 8px!important;
+    }
+</style>
 <div class="container-fluid">
-
+    <div class="text-center mb-3"><p class="btn text-white" style="cursor:default!important">Đơn hàng của tôi</p></div>
     @if (Model != null && Model.Count > 0)
     {
         foreach (var item in Model)
         {
+            if (item.Type == 2)
+            {
+                <div class="item-order  overflow-hidden">
+                    <div class="detail-item">
+                        <b class="mr">Đơn hàng: </b>
+                        <p>@item.Id</p>
+                    </div>
+                    <div class="detail-item">
+                        <b class="mr">Thời gian: </b>
+                        <p>@item.CreatedDate.ToString("dd/MM HH:mm:ss")</p>
+                    </div>
+                    <div class="detail-item">
+                        <b class="text-nowrap mr">Phiên: </b>
+                        <p><span class="float-end text-nowrap">@PTEcommerce.Business.Helper.GetSubstringAfterWord(item.Note, "phiên")</span></p>
+                    </div>
+                    <div class="detail-item">
+                        <b class="text-nowrap mr">Kết quả: </b>
+                        <p><span class="float-end text-nowrap">@PTEcommerce.Business.Helper.GetSubstringAfterWord(item.Note, "quả")</span></p>
+                    </div>
+                    <div class="detail-item">
+                        <b class="mr">Phần thưởng: </b>
+                        <p>
+                            <span class="float-end">
+                                <b class="text-success">@PTEcommerce.Business.Helper.MoneyFormat(item.AmountAfter)</b>
+                            </span>
+                        </p>
+                    </div>
+                </div>
 
-            <div class="item-order  overflow-hidden">
-                <div class="detail-item">
-                    <b>Đơn hàng: </b>
-                    <p>@item.Id</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thời gian: </b>
-                    <p>@item.CreatedDate.ToString("dd/MM HH:mm:ss")</p>
-                </div>
-                <div class="detail-item">
-                    <b class="text-nowrap">Dự đoán: </b>
-                    <p><span class="float-end text-nowrap">@item.Note</span></p>
-                </div>
-                <div class="detail-item">
-                    <b>Phần thưởng: </b>
-                    <p>
-                        <span class="float-end">
-                            <b class="text-success">@PTEcommerce.Business.Helper.MoneyFormat(item.AmountAfter)</b>
-                        </span>
-                    </p>
-                </div>
-            </div>
-
-            <hr>
-
+                <hr>
+            }
         }
     }
 </div>

@@ -104,8 +104,8 @@
                     $("#list_5_phien").empty();
                     for (let i = 0; i < 5; i++) {
                         let li = ` <li class="list-group-item list_style_type">
-                                        <span style="margin-left:-15px;">Kỳ ${res[i].sesion} </span>
-                                        <span class="">${res[i].value1} ${res[i].value2}</span>
+                                        <span class="fz-14" style="margin-left:-15px;">Kỳ ${res[i].sesion} </span>
+                                        <span class="fz-14">${res[i].value1} ${res[i].value2}</span>
                                     </li>`;
 
                         $('#list_5_phien').append(li)
@@ -123,6 +123,7 @@
                 page: 1
             },
             success: function (res) {
+                console.log("lich su du doan");
                 $('#listHistoryPlayGames').html(res);
             }
         });
