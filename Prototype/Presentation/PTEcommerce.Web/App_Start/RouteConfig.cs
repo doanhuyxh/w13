@@ -64,7 +64,7 @@ namespace PTEcommerce.Web
             );
             routes.MapRoute(
                 name: "PlayGame",
-                url: "choi-game",
+                url: "nhiem-vu",
                 defaults: new { controller = "Proccess", action = "Index" },
                 namespaces: new string[] { "PTEcommerce.Web.Controllers" }
             );
@@ -72,6 +72,12 @@ namespace PTEcommerce.Web
                 name: "Phien cu",
                 url: "phien-cu",
                 defaults: new { controller = "Proccess", action = "GetYetSession" },
+                namespaces: new string[] { "PTEcommerce.Web.Controllers" }
+            );
+            routes.MapRoute(
+                name: "Danh Sach Phien Cu",
+                url: "danh-sach-phien-cu",
+                defaults: new { controller = "Proccess", action = "GetYet5Session" },
                 namespaces: new string[] { "PTEcommerce.Web.Controllers" }
             );
             routes.MapRoute(

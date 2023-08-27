@@ -21,7 +21,8 @@ namespace PTEcommerce.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var data = playGames.GetTop10();
+            return View(data);
         }
         public ActionResult OrderCurrent()
         {

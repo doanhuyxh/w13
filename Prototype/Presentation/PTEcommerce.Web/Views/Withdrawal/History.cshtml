@@ -2,173 +2,66 @@
 @{
     ViewBag.Title = "History";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
+
     var mobile = Request.Browser.IsMobileDevice;
 }
+@model List<marketplace.WithdrawalExtend>
 
-            <div class="item-order">
+
+<div class="container-fluid">
+    <div class="text-center mb-3">
+        <p class="text-white">Lịch sử rút tiền</p>
+    </div>
+    @if (Model != null && Model.Count > 0)
+    {
+        foreach (var item in Model)
+        {
+            var status = "Đang xử lý";
+            var icon = "bi bi-info-circle";
+            if (item.Status == 2)
+            {
+                status = "Thành công";
+                icon = "bi-check-circle";
+            }
+            else if (item.Status == 4)
+            {
+                status = "Đã bị hủy";
+                icon = "bi-x-circle";
+            }
+
+            <div class="item-order mb-3">
                 <div class="detail-item">
-                    <b>Số thứ tự đơn hàng:</b>
-                    <p>2323</p>
+                    <b>Mã đơn: </b>
+                    <p>@item.Id</p>
                 </div>
                 <div class="detail-item">
-                    <b>Thời gian:</b>
-                    <p>2023-05-05 12:12</p>
+                    <b>Thời gian: </b>
+                    <p>@item.CreatedDate.ToString("dd/MM HH:mm:ss")</p>
                 </div>
                 <div class="detail-item">
-                    <b>Thành tiền:</b>
-                    <p>100.000 đ</p>
+                    <b>Thành tiền: </b>
+                    <p>@PTEcommerce.Business.Helper.MoneyFormat(item.Amount)</p>
                 </div>
                 <div class="detail-item">
-                    <b>Trạng thái:</b>
-                    <p class="status-payment-success">Thành công</p>
+                    <b>Trạng thái: </b>
+                    @if (item.Status == 1)
+                    {
+                        <p class="status-payment-pending">Đang xử lý</p>
+                    }
+                    else if (item.Status == 2)
+                    {
+                        <p class="status-payment-success">Thành công</p>
+                    }
+                    else
+                    {
+                        <p class="status-payment-faild">
+                            Thất bại
+                        </p>
+                    }
+
                 </div>
             </div>
 
-            <hr>
-            <div class="item-order">
-                <div class="detail-item">
-                    <b>Số thứ tự đơn hàng:</b>
-                    <p>2324</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thời gian:</b>
-                    <p>2023-05-15 12:15</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thành tiền:</b>
-                    <p>100.000 đ</p>
-                </div>
-                <div class="detail-item">
-                    <b>Trạng thái:</b>
-                    <p class="status-payment-pending">Đang xử lý</p>
-                </div>
-            </div>
-
-            <hr>
-            <div class="item-order">
-                <div class="detail-item">
-                    <b>Số thứ tự đơn hàng:</b>
-                    <p>2326</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thời gian:</b>
-                    <p>2023-05-16 02:12</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thành tiền:</b>
-                    <p>100.000 đ</p>
-                </div>
-                <div class="detail-item">
-                    <b>Trạng thái:</b>
-                    <p class="status-payment-success">Thành công</p>
-                </div>
-            </div>
-
-            <hr>
-            <div class="item-order">
-                <div class="detail-item">
-                    <b>Số thứ tự đơn hàng:</b>
-                    <p>23238</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thời gian:</b>
-                    <p>2023-05-20 03:42</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thành tiền:</b>
-                    <p>100.000 đ</p>
-                </div>
-                <div class="detail-item">
-                    <b>Trạng thái:</b>
-                    <p class="status-payment-faild">Thất bại</p>
-                </div>
-            </div>
-
-            <hr>
-            <div class="item-order">
-                <div class="detail-item">
-                    <b>Số thứ tự đơn hàng:</b>
-                    <p>23241</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thời gian:</b>
-                    <p>2023-06-05 12:12</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thành tiền:</b>
-                    <p>100.000 đ</p>
-                </div>
-                <div class="detail-item">
-                    <b>Trạng thái:</b>
-                    <p class="status-payment-success">Thành công</p>
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="item-order">
-                <div class="detail-item">
-                    <b>Số thứ tự đơn hàng:</b>
-                    <p>23243</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thời gian:</b>
-                    <p>2023-07-05 09:10</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thành tiền:</b>
-                    <p>100.000 đ</p>
-                </div>
-                <div class="detail-item">
-                    <b>Trạng thái:</b>
-                    <p class="status-payment-success">Thành công</p>
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="item-order">
-                <div class="detail-item">
-                    <b>Số thứ tự đơn hàng:</b>
-                    <p>2354</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thời gian:</b>
-                    <p>2023-08-05 12:12</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thành tiền:</b>
-                    <p>100.000 đ</p>
-                </div>
-                <div class="detail-item">
-                    <b>Trạng thái:</b>
-                    <p class="status-payment-success">Thành công</p>
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="item-order">
-                <div class="detail-item">
-                    <b>Số thứ tự đơn hàng:</b>
-                    <p>2347</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thời gian:</b>
-                    <p>2023-08-10 12:12</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thành tiền:</b>
-                    <p>100.000 đ</p>
-                </div>
-                <div class="detail-item">
-                    <b>Trạng thái:</b>
-                    <p class="status-payment-success">Thành công</p>
-                </div>
-            </div>
-
-            <hr>
-
-
-   
+        }
+    }
+</div>

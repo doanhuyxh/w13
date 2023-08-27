@@ -93,7 +93,7 @@
             type: 'POST',
             data: {
                 result1: parseInt($('#sltResult1').val()),
-                result2: parseInt($('#sltResult2').val()),
+                result2: parseInt($('#sltsltResult2').val()),
                 sessionId: parseInt($('#sessionIdText').val())
             },
             success: function (res) {
@@ -110,6 +110,7 @@
         let timer = parseInt($('#valueTimeCountDown').val());
         if (timer < 0) {
             return;
+           
         }
         let minutes = parseInt(timer / 60, 10);
         let seconds = parseInt(timer % 60, 10);
@@ -119,6 +120,8 @@
 
         $('#timeCountDown').html(minutes + ":" + seconds);
         $('#valueTimeCountDown').val(timer - 1);
+
+        $('#tblHistoryPlaySession').bootstrapTable('refresh', { silent: true });
     },
     startChatHub: function () {
         var chat = $.connection.chatHub;
@@ -144,4 +147,4 @@
 };
 $(document).ready(function () {
     dashboard.registerControl();
-});
+});;

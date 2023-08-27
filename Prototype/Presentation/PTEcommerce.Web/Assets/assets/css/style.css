@@ -10705,6 +10705,9 @@ fieldset:disabled .btn {
 .h-400 {
     height: 400px;
 }
+.h-600 {
+    height: 600px;
+}
 
 .h-100px {
     height: 100px;

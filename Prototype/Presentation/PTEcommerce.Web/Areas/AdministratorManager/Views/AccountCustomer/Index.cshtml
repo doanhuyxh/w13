@@ -65,7 +65,6 @@
 
 <div id="myModalConfirmChangePassword" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -86,3 +85,113 @@
     </div>
 </div>
 
+
+<div id="myModalDetailUser" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog ">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Thông tin khách hàng</h4>
+            </div>
+            <div class="modal-body" style="font-weight:bold">
+                <input hidden id="userd" />
+                <div class="row my-1">
+                    <div class="col-4">Họ và tên</div>
+                    <div class="col-8"><span id="fullname"></span></div>
+                </div>
+                <div class="row my-1">
+                    <div class="col-4">Giới tính</div>
+                    <div class="col-8"><span id="gender"></span></div>
+                </div>
+                <div class="row my-1">
+                    <div class="col-4">Tên ngân hàng</div>
+                    <div class="col-8"><span id="bankName"></span></div>
+                </div>
+                <div class="row my-1">
+                    <div class="col-4">Chủ tài khoản</div>
+                    <div class="col-8"><span id="bankaccount"></span></div>
+                </div>
+                <div class="row my-1">
+                    <div class="col-4">Số tài khoản</div>
+                    <div class="col-8"><span id="banknumber"></span></div>
+                </div>
+                <div class="row my-1">
+                    <div class="col-4">Số dư</div>
+                    <div class="col-8"><span id="AmountAvaiable"></span></div>
+                </div>
+                <div class="row my-1">
+                    <div class="col-4">Thay đổi trạng thái</div>
+                    <div class="col-8">
+                        <select class="form-select mb-3" id="statusUser">
+                            <option disabled selected>Vui lòng chọn</option>
+                            <option value="1">Hoạt động</option>
+                            <option value="2">Ngừng hoạt động</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" onclick="UpdateStatusUser()"><i class="ti-save"></i> Duyệt</button>
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal"><i class="ti-close"></i> Đóng lại</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function ViewAcc(id) {
+        fetch(`/AdministratorManager/AccountCustomer/ViewAccCustomer?id=${id}`)
+            .then(res => res.json())
+            .then(data => {
+                if (!data.status) {
+                    alert("Tài khoản chưa điền đủ thông tin ngân hàng");
+                } else {
+                    data = data.data;
+                    console.log(data)
+                    $('#userd').val(data.Id);
+                    $('#fullname').html(data.FullName);
+                    $('#gender').html(data.Gender);
+                    $('#bankName').html(data.BankName);
+                    $('#bankaccount').html(data.BankAccount);
+                    $('#banknumber').html(data.BankNumber);
+                    $('#AmountAvaiable').html(data.AmountAvaiable);
+                    if (data.IsActive) {
+                        $('#statusUser').val(1);
+                    }
+                    else {
+                        $('#statusUser').val(2);
+                    }
+
+                    $('#myModalDetailUser').modal('show');
+                }
+            });
+
+    };
+
+    function UpdateStatusUser() {
+        let check;
+        if ($('#statusUser').val() == 1) {
+            check = 1;
+        } else {
+            check = 0
+        }
+
+        fetch(`/AdministratorManager/AccountCustomer/UpdateStatus?id=${$('#userd').val()}&status=${check}`)
+            .then(res => res.json())
+            .then(d => {
+                if (d.status) {
+                    base.toastrAlert("Chuyển trạng thái người dùng thành công", 'success');
+                    $('#myModalDetailUser').modal('hide');
+                    $('#tblAccount').bootstrapTable('refresh', { silent: true });
+                } else {
+                    base.toastrAlert("Chuyển trạng thái người dùng bị lôi", 'error');
+                    $('#myModalDetailUser').modal('hide');
+                    $('#tblAccount').bootstrapTable('refresh', { silent: true });
+                }
+
+            })
+
+    }
+</script>

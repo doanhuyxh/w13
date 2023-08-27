@@ -7,10 +7,11 @@
     foreach (var item in Model)
     {
         <li class="list-group-item size-15">
-            <p class="m-1">Phiên: <b class="float-end">@item.SessionId</b></p>
-            <p class="m-1">Thời gian: <b class="float-end">@item.CreatedDate.ToString("dd/MM HH:mm:ss")</b></p>
-            <p class="m-1">Chọn - Kết quả: <span class="float-end"><b class="text-danger">@PTEcommerce.Business.Helper.ConvertValue(item.Value).valuestring</b> - <b class="text-success">@(!string.IsNullOrEmpty(item.Result) ? PTEcommerce.Business.Helper.ConvertValue(item.Result).valuestring : "...")</b></span></p>
-            <p class="m-1">Dự đoán: <b class="float-end">@PTEcommerce.Business.Helper.MoneyFormat(item.Amount)</b></p>
+
+            <p class="m-1">Số đơn hàng: <b class="float-end">@item.Id</b></p>
+            <p class="m-1">Số phát hành: <b class="float-end">@item.SessionId</b></p>
+            <p class="m-1">Đặt đơn hàng: <span class="float-end"><b class="text-danger">@PTEcommerce.Business.Helper.ConvertValue2(item.Value).valuestring</b> - <b class="text-success">@(!string.IsNullOrEmpty(item.Result) ? PTEcommerce.Business.Helper.ConvertValue2(item.Result).valuestring : "...")</b></span></p>
+            <p class="m-1">Số lượng: <b class="float-end">@PTEcommerce.Business.Helper.MoneyFormat(item.Amount)</b></p>
             <p class="m-1">
                 Phần thưởng: <span class="float-end">
                     @if (item.AmountReceive > 0)
@@ -23,6 +24,23 @@
                     }
                 </span>
             </p>
+
+            <p class="m-1">
+                Trạng thái:
+                <b class="float-end">
+                    @if (item.Status != 1 )
+                    {
+                        <span class="bg-success opacity-4 rounded-3 px-1">Đã kết thúc</span>
+
+                    }
+                    else
+                    {
+                        <span class="bg-danger opacity-4 rounded-3 px-1">Chờ kết thúc</span>
+                    }
+                </b>
+            </p>
+            <p class="m-1">Thời gian: <b class="float-end">@item.CreatedDate.ToString("dd/MM HH:mm:ss")</b></p>
+
         </li>
     }
 }

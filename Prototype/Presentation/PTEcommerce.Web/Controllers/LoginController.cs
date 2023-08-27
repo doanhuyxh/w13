@@ -129,6 +129,14 @@ namespace PTEcommerce.Web.Controllers
                     msg = "Tài khoản hoặc mật khẩu không đúng"
                 }, JsonRequestBehavior.AllowGet);
             }
+            if(accountData.IsActive == false)
+            {
+                return Json(new
+                {
+                    status = false,
+                    msg = "Tài khoản bị khóa"
+                }, JsonRequestBehavior.AllowGet);
+            }
             string token = Helper.GetToken(accountData.Username.Trim());
             account.UpdateToken(accountData.Id, token);
             var sess = new MemberSession

@@ -1,218 +1,50 @@
-﻿
+﻿@model List<marketplace.HistoryTransfer>
 @{
-    ViewBag.Title = "HistoryOrder";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
-    Layout = null;
-}
-@*
-    <!-- Header -->
-    <header class="container-fluid header">
-        <div class="row h-100">
-            <div class="col-auto align-self-center">
-                <a href="/thong-tin-ca-nhan" class="btn btn-link back-btn text-color-theme">
-                    <i class="bi bi-arrow-left size-20"></i>
-                </a>
-            </div>
-            <div class="col text-center align-self-center">
-                <h5 class="mb-0">ĐƠN HÀNG CỦA TÔI</h5>
-            </div>
-            <div class="col-auto align-self-center">
-                <a href="/" class="link text-color-theme">
-                    <i class="bi bi-shop size-22"></i>
-                </a>
-            </div>
-        </div>
-    </header>
-    <!-- Header ends -->
-    <div class="main-container container top-20">
-        <!-- Chat list   -->
-        <div class="row">
-            <div class="col-12 px-0">
-                <div class="list-group list-group-flush bg-none p-2" id="order-history-order">
 
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="row">
-                    <div class="col text-center">
-                        <a href="javascript:void(0)" class="h5 text-theme" id="btnLoadMore">Xem thêm...</a>
+    ViewBag.Title = "HistoryOrder";
+}
+<style>
+    .mr{
+        margin-right: 8px!important;
+    }
+</style>
+<div class="container-fluid">
+    <div class="text-center mb-3"><p class="btn text-white" style="cursor:default!important">Đơn hàng của tôi</p></div>
+    @if (Model != null && Model.Count > 0)
+    {
+        foreach (var item in Model)
+        {
+            if (item.Type == 2)
+            {
+                <div class="item-order  overflow-hidden">
+                    <div class="detail-item">
+                        <b class="mr">Đơn hàng: </b>
+                        <p>@item.Id</p>
+                    </div>
+                    <div class="detail-item">
+                        <b class="mr">Thời gian: </b>
+                        <p>@item.CreatedDate.ToString("dd/MM HH:mm:ss")</p>
+                    </div>
+                    <div class="detail-item">
+                        <b class="text-nowrap mr">Phiên: </b>
+                        <p><span class="float-end text-nowrap">@PTEcommerce.Business.Helper.GetSubstringAfterWord(item.Note, "phiên")</span></p>
+                    </div>
+                    <div class="detail-item">
+                        <b class="text-nowrap mr">Kết quả: </b>
+                        <p><span class="float-end text-nowrap">@PTEcommerce.Business.Helper.GetSubstringAfterWord(item.Note, "quả")</span></p>
+                    </div>
+                    <div class="detail-item">
+                        <b class="mr">Phần thưởng: </b>
+                        <p>
+                            <span class="float-end">
+                                <b class="text-success">@PTEcommerce.Business.Helper.MoneyFormat(item.AmountAfter)</b>
+                            </span>
+                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        @foreach (var item in ViewBag.hs)
-        {
-            <div class="item-order">
-                <div class="detail-item">
-                    <b>Số thứ tự đơn hàng:</b>
-                    <p>123456</p>
-                </div>
-                <div class="detail-item">
-                    <b>Mã đơn hàng:</b>
-                    <p>SM-1234-CS</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thành tiền:</b>
-                    <p>100.000 đ</p>
-                </div>
-                <div class="detail-item">
-                    <b>Loại:</b>
-                    <p>Lớn đôi</p>
-                </div>
-                <div class="detail-item">
-                    <b>Trạng thái:</b>
-                    <p>Thành công</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thời gian:</b>
-                    <p>2023-05-05 12:12:12</p>
-                </div>
-            </div>
-
-            <hr>
+                <hr>
+            }
         }
-    </div>
-*@
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đơn hàng</title>
-
-    <!-- BOOTSTRAP -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
-    <!-- SWIPPER -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-
-    <!-- BASE CSS -->
-    <link rel="stylesheet" href="~/Assets//publics/css/style.css">
-</head>
-
-<body>
-    <div class="work-page info-user-page">
-        <!-- NAV START -->
-        <div class="navbar-page">
-            <div class="icon col-2">
-                <a href="/">
-                    <img src="~/Assets/publics/images/btn-out.png" width="100%" alt="">
-                </a>
-            </div>
-            <div class="text-nav col-8 logo">
-                <h5>Đơn hàng của tôi</h5>
-            </div>
-        </div>
-
-        <div class="nav-bottom">
-            <p>Copyright  c  2023 MCV Group, All Rights Reserved</p>
-        </div>
-        <!-- NAV END -->
-        <!-- MAIN START -->
-        <div class="main">
-
-            <div class="item-order">
-                <div class="detail-item">
-                    <b>Số thứ tự đơn hàng:</b>
-                    <p>1311</p>
-                </div>
-                <div class="detail-item">
-                    <b>Mã đơn hàng:</b>
-                    <p>SM-1311-CS</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thành tiền:</b>
-                    <p>100.000 đ</p>
-                </div>
-                <div class="detail-item">
-                    <b>Loại:</b>
-                    <p>Lớn đôi</p>
-                </div>
-                <div class="detail-item">
-                    <b>Trạng thái:</b>
-                    <p>Thành công</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thời gian:</b>
-                    <p>2023-06-05 12:12</p>
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="item-order">
-                <div class="detail-item">
-                    <b>Số thứ tự đơn hàng:</b>
-                    <p>1313</p>
-                </div>
-                <div class="detail-item">
-                    <b>Mã đơn hàng:</b>
-                    <p>SM-1313-CS</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thành tiền:</b>
-                    <p>100.000 đ</p>
-                </div>
-                <div class="detail-item">
-                    <b>Loại:</b>
-                    <p>Lớn đôi</p>
-                </div>
-                <div class="detail-item">
-                    <b>Trạng thái:</b>
-                    <p>Thành công</p>
-                </div>
-                <div class="detail-item">
-                    <b>Thời gian:</b>
-                    <p>2023-05-05 12:12</p>
-                </div>
-            </div>
-
-            <hr>
-
-        </div>
-        <!-- MAIN END -->
-
-
-    </div>
-
-    <!-- JQUERY -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- SWIPPER -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-    <script>
-
-        // SLIDER
-        var swiper = new Swiper(".slider", {
-            loop: true,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-        });
-
-        // NAV LEFT START
-        $(document).ready(function () {
-
-            $(".btn-nav").click(function () {
-                $(".left-bar").addClass("active");
-                $("body").addClass("active");
-            });
-
-            $(".background-left-bar").click(function () {
-                $(".left-bar").removeClass("active");
-                $("body").removeClass("active");
-            });
-        });
-        // NAV LEFT END
-
-    </script>
-
-</body>
-
-</html>
+    }
+</div>
