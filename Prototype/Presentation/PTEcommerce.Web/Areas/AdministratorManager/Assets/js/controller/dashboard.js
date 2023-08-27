@@ -124,13 +124,16 @@
         var chat = $.connection.chatHub;
         // Create a function that the hub can call to broadcast chat messages.  
         chat.client.broadcastMessage = function (session, value1, value2) {
-            base.nosuccess('Phiên #' + session + ' đã tạo mới. Chỉnh sửa kết quả ngay!');
-            $('.sessionId').html(session);
-            $('#sessionIdText').val(session);
-            $('#sltResult1').val(value1);
-            $('#sltResult2').val(value2);
-            $('#valueTimeCountDown').val(90);
-            dashboard.getPlayGameBySession();
+            if (parseInt(session) != parseInt($('#sessionIdText').val()))
+            {
+                base.nosuccess('Phiên #' + session + ' đã tạo mới. Chỉnh sửa kết quả ngay!');
+                $('.sessionId').html(session);
+                $('#sessionIdText').val(session);
+                $('#sltResult1').val(value1);
+                $('#sltResult2').val(value2);
+                $('#valueTimeCountDown').val(180);
+                dashboard.getPlayGameBySession();
+            }
         };
         chat.client.updatePlaygame = function () {
             $('#tblHistoryPlaySession').bootstrapTable('refresh', { silent: true });
